@@ -12,7 +12,7 @@ export const DELETE_USED_ITEM_QUESTION_ANSWER = gql`
   }
 `;
 
-export const useMutationDeleteUsedItemQuestion = () => {
+export const useMutationDeleteUsedItemQuestionAnswer = () => {
   const [deleteUseditemQuestionAnswer] = useMutation<
     Pick<IMutation, "deleteUseditemQuestionAnswer">,
     IMutationDeleteUseditemQuestionAnswerArgs

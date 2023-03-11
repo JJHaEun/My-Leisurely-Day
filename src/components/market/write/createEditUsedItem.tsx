@@ -21,7 +21,8 @@ const ReactQuill = dynamic(async () => await import("react-quill"), {
   ssr: false,
 });
 export default function CreateEditMarket(): JSX.Element {
-  const { onChangeAddress, address, setAddress } = useOnChangeAddress();
+  const { onChangeAddress, address } = useOnChangeAddress();
+  const [contents, setContents] = useState("");
   const {
     onClickCreateUsedItem,
     onClickUpdateUsedItem,
@@ -34,7 +35,23 @@ export default function CreateEditMarket(): JSX.Element {
     useForm<IUseCreateForm>({
       resolver: yupResolver(usedItemSchema),
       mode: "onChange",
+      defaultValues: {
+        price:
+          data?.fetchUseditem.price !== null ? data?.fetchUseditem.price : "",
+        remarks: data?.fetchUseditem.remarks,
+        contents: data?.fetchUseditem.contents ?? "",
+        useditemAddress: {
+          addressDetail:
+            data?.fetchUseditem.useditemAddress?.addressDetail ?? "",
+        },
+      },
+
       values: {
+        name: data?.fetchUseditem.name ? data.fetchUseditem.name : "",
+        price:
+          data?.fetchUseditem.price !== null ? data?.fetchUseditem.price : "",
+        remarks: data?.fetchUseditem.remarks,
+
         useditemAddress: {
           address:
             data?.fetchUseditem?.useditemAddress?.address !== null &&
@@ -46,6 +63,8 @@ export default function CreateEditMarket(): JSX.Element {
             data?.fetchUseditem.useditemAddress?.zipcode !== undefined
               ? data?.fetchUseditem.useditemAddress?.zipcode
               : "",
+          addressDetail:
+            data?.fetchUseditem.useditemAddress?.addressDetail ?? "",
         },
       },
     });
@@ -55,12 +74,13 @@ export default function CreateEditMarket(): JSX.Element {
   const onChange = onChangeAddress(setValue);
 
   useEffect(() => {
-    setValue("contents", data?.fetchUseditem.contents ?? "");
+    setValue("contents", data?.fetchUseditem?.contents ?? "");
     setValue(
       "useditemAddress.address",
       data?.fetchUseditem.useditemAddress?.address ?? ""
     );
-    setAddress(data?.fetchUseditem.useditemAddress?.address ?? "");
+    setContents(data?.fetchUseditem.contents ?? "");
+    // setAddress(data?.fetchUseditem.useditemAddress?.address ?? "");
   }, []);
 
   return (
@@ -82,7 +102,6 @@ export default function CreateEditMarket(): JSX.Element {
             type="text"
             placeholder="상품명을 작성해주세요"
             {...register("name")}
-            defaultValue={data?.fetchUseditem.name ?? ""}
           />
           <div>{formState.errors.name?.message}</div>
         </div>
@@ -92,7 +111,6 @@ export default function CreateEditMarket(): JSX.Element {
             type="text"
             placeholder="상품요약을 작성해주세요"
             {...register("remarks")}
-            defaultValue={data?.fetchUseditem.contents ?? ""}
           />
           <div>{formState.errors.remarks?.message}</div>
         </div>
@@ -102,11 +120,6 @@ export default function CreateEditMarket(): JSX.Element {
             type="text"
             placeholder="판매 가격을 입력해주세요"
             {...register("price")}
-            defaultValue={
-              data?.fetchUseditem.price !== null
-                ? data?.fetchUseditem.price
-                : ""
-            }
           />
         </div>
         <div>
@@ -114,9 +127,15 @@ export default function CreateEditMarket(): JSX.Element {
           <div>{formState.errors.contents?.message}</div>
           {typeof window !== "undefined" && (
             <ReactQuill
+              // value={value}
               onChange={onChangeContents(setValue, trigger)}
               placeholder="상품을 설명해주세요"
-              defaultValue={data?.fetchUseditem.contents ?? ""}
+              //   {...register("contents")}
+              defaultValue={
+                data?.fetchUseditem.contents !== ""
+                  ? data?.fetchUseditem.contents
+                  : ""
+              }
             />
           )}
         </div>
@@ -150,9 +169,9 @@ export default function CreateEditMarket(): JSX.Element {
             <input
               type="text"
               {...register("useditemAddress.addressDetail")}
-              defaultValue={
-                data?.fetchUseditem.useditemAddress?.addressDetail ?? ""
-              }
+              //   defaultValue={
+              //     data?.fetchUseditem.useditemAddress?.addressDetail ?? ""
+              //   }
             />
           </div>
         </div>

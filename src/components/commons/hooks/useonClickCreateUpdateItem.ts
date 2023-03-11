@@ -92,11 +92,11 @@ export const useOnclickCreateUpdateUsedItem = () => {
     //   Modal.info({ content: "수정사항이 없습니다" });
     //   return;
     // }
-    if (typeof router.query.usedItemId !== "string") return;
+    if (typeof router.query.productId !== "string") return;
     try {
       const result = await updateUseditem({
         variables: {
-          useditemId: router.query.usedItemId,
+          useditemId: router.query.productId,
           updateUseditemInput: {
             name: data.name,
             contents: data.contents,
@@ -114,7 +114,7 @@ export const useOnclickCreateUpdateUsedItem = () => {
         refetchQueries: [
           {
             query: FETCH_USED_ITEM,
-            variables: { useditemId: router.query.usedItemId },
+            variables: { useditemId: router.query.productId },
           },
         ],
       });
