@@ -8,7 +8,7 @@ export default function SignUp(): JSX.Element {
   const { onClickSignUp } = useOnclickSignUp();
   const { register, handleSubmit, formState } = useForm<ISignUpForm>({
     resolver: yupResolver(schemaSignUp),
-    mode: "onSubmit",
+    mode: "onChange",
   });
   return (
     <div>

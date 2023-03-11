@@ -18,8 +18,9 @@ export const getAccessToken = async (): Promise<string | undefined> => {
       "https://backend-practice.codebootcamp.co.kr/graphql",
       { credentials: "include" }
     );
-    // prettier-ignore
-    const result = await graphQLClient.request<Pick<IMutation,"restoreAccessToken">>(RESTORE_ACCESS_TOKEN);
+    const result = await graphQLClient.request<
+      Pick<IMutation, "restoreAccessToken">
+    >(RESTORE_ACCESS_TOKEN);
     const newAccessToken = result.restoreAccessToken.accessToken;
     console.log(newAccessToken);
     return newAccessToken;

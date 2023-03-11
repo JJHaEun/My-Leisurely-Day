@@ -44,7 +44,7 @@ export const useQueryFetchUsedItem = (): IuseQueryFetchUsedItem => {
     IQueryFetchUseditemArgs
   >(FETCH_USED_ITEM, {
     variables: {
-      useditemId: String(router.query.productBoardId),
+      useditemId: String(router.query.productId),
     },
   });
 

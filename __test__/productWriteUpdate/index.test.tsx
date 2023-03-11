@@ -6,7 +6,8 @@ import {
 } from "@apollo/client";
 import fetch from "cross-fetch";
 import mockRouter from "next-router-mock"; // router대신 사용할 것
-import { render } from "react-dom";
+import ProductPage from "../../pages/market/new";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
@@ -22,8 +23,9 @@ describe("잘 등록되는지 테스트", () => {
     render(
       <ApolloProvider client={client}>
         {/*  */}
-        <div></div>
+        <ProductPage />
       </ApolloProvider>
     );
+    fireEvent.change(screen.getByRole());
   });
 });

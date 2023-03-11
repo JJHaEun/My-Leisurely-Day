@@ -21,8 +21,8 @@ export const useOnClickSignIn = () => {
         return;
       }
       setAccessToken(accessToken);
-      const newPageUrl = "/mypage";
-      window.location.href = newPageUrl;
+      // const newPageUrl = "/mypage";
+      // window.location.href = newPageUrl;
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });
     }
