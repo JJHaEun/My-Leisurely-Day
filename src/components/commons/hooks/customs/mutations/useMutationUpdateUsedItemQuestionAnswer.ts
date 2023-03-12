@@ -18,7 +18,7 @@ const UPDATE_USED_ITEM_QUSETION_ANSWER = gql`
   }
 `;
 
-export const useMutationUpdate = () => {
+export const useMutationUpdateQuestionAnswer = () => {
   const [updateUseditemQuestionAnswer] = useMutation<
     Pick<IMutation, "updateUseditemQuestionAnswer">,
     IMutationUpdateUseditemQuestionAnswerArgs

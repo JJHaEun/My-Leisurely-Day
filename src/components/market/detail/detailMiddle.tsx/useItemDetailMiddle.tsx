@@ -1,4 +1,6 @@
 import DOMPurify from "dompurify";
+import QuestionList from "../../itemQuestion/questionList/questionList";
+import Question from "../../itemQuestion/questionWrite/questionWrite";
 import KakaoMapDetail from "../../kakao/kakaomapDetail/kakaoMapDetail";
 import { IItemDetailProps } from "../usedItemDetail.types";
 
@@ -54,7 +56,8 @@ export default function DetailMarketMiddle(
           </div>
           <span>{props.data?.fetchUseditem.seller?.name}</span>
         </div>
-        {/* <div>댓글부분</div> */}
+        <Question />
+        <QuestionList />
       </div>
     </div>
   );
