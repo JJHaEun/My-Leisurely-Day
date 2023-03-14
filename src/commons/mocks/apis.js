@@ -1,6 +1,8 @@
 import { graphql } from "msw";
 
-const apis = [
+const gql = graphql.link("http://mock.com/graphql");
+
+export const apis = [
   gql.mutation("createUseditem", (req, res, ctx) => {
     const { name, remarks, contents, price } =
       req.variables.createUseditemInput; // 이것에 대해 요청을 한다

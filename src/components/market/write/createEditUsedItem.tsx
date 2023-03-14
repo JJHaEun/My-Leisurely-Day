@@ -22,7 +22,6 @@ const ReactQuill = dynamic(async () => await import("react-quill"), {
 });
 export default function CreateEditMarket(): JSX.Element {
   const { onChangeAddress, address } = useOnChangeAddress();
-  const [contents, setContents] = useState("");
   const {
     onClickCreateUsedItem,
     onClickUpdateUsedItem,
@@ -30,7 +29,7 @@ export default function CreateEditMarket(): JSX.Element {
     onChangeImageUrls,
   } = useOnclickCreateUpdateUsedItem();
   const { data } = useQueryFetchUsedItem();
-  const { onChangeContents } = useReactQuill();
+  const { onChangeContents, contents } = useReactQuill();
   const { register, handleSubmit, formState, trigger, setValue } =
     useForm<IUseCreateForm>({
       resolver: yupResolver(usedItemSchema),
@@ -79,7 +78,6 @@ export default function CreateEditMarket(): JSX.Element {
       "useditemAddress.address",
       data?.fetchUseditem.useditemAddress?.address ?? ""
     );
-    setContents(data?.fetchUseditem.contents ?? "");
     // setAddress(data?.fetchUseditem.useditemAddress?.address ?? "");
   }, []);
 
@@ -99,6 +97,7 @@ export default function CreateEditMarket(): JSX.Element {
         <div>
           <label>상품명</label>
           <input
+            role="name-input"
             type="text"
             placeholder="상품명을 작성해주세요"
             {...register("name")}
@@ -108,6 +107,7 @@ export default function CreateEditMarket(): JSX.Element {
         <div>
           <label>상품요약</label>
           <input
+            role="remarks-input"
             type="text"
             placeholder="상품요약을 작성해주세요"
             {...register("remarks")}
@@ -117,6 +117,7 @@ export default function CreateEditMarket(): JSX.Element {
         <div>
           <label>판매 가격</label>
           <input
+            role="price-input"
             type="text"
             placeholder="판매 가격을 입력해주세요"
             {...register("price")}
@@ -125,17 +126,14 @@ export default function CreateEditMarket(): JSX.Element {
         <div>
           <label>상품내용</label>
           <div>{formState.errors.contents?.message}</div>
+          <input role="contents-input" type="text" {...register("contents")} />
+          {/* 테스트 코드위해 추가한 input */}
           {typeof window !== "undefined" && (
             <ReactQuill
-              // value={value}
               onChange={onChangeContents(setValue, trigger)}
               placeholder="상품을 설명해주세요"
               //   {...register("contents")}
-              defaultValue={
-                data?.fetchUseditem.contents !== ""
-                  ? data?.fetchUseditem.contents
-                  : ""
-              }
+              value={contents ? contents : data?.fetchUseditem.contents}
             />
           )}
         </div>
@@ -187,7 +185,7 @@ export default function CreateEditMarket(): JSX.Element {
             </div>
           ))}
         </div>
-        <button>{isEdit ? "수정" : "등록"}하기</button>
+        <button role="submit-button">{isEdit ? "수정" : "등록"}하기</button>
       </form>
     </div>
   );
