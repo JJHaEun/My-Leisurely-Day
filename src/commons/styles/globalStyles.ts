@@ -6,10 +6,14 @@ export const globalStyles = css`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-weight: 400;
   }
   @font-face {
-    font-family: "nanum_somi";
-    src: url("/font/nanum_somi.ttf");
+    font-family: "Somi";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/naverfont_10@1.0/Somi.woff")
+      format("woff");
+    font-weight: normal;
+    font-style: normal;
   }
   @font-face {
     font-family: "UhBeeRice";

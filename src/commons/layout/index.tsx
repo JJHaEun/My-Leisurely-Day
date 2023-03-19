@@ -1,19 +1,33 @@
+import { useRouter } from "next/router";
+import MainHeader from "./header/mainHeader/mainHeader";
+import SignInAndSignUpHeader from "./header/singIninAndSignUpHeader/singIninAndSignUpHeader";
+import * as S from "./index.styles";
+
 interface ILayoutProps {
   children: JSX.Element;
 }
 
 export default function Layout(props: ILayoutProps): JSX.Element {
+  const router = useRouter();
+  const SHOW_LOGIN_AND_SIGN_IN_HEADER = [`/login`, "/signUp"];
+
+  const isShowLoginAndSignUp = SHOW_LOGIN_AND_SIGN_IN_HEADER.includes(
+    router.asPath
+  );
+
   return (
-    <>
-      <div>
-        <div>
-          {/* 헤더 */}
+    <S.Page>
+      {isShowLoginAndSignUp && <SignInAndSignUpHeader />}
+      {!isShowLoginAndSignUp && (
+        <>
+          <MainHeader />
           {/* 베너 */}
-        </div>
-        <div>
-          <div>{props.children}</div>
-        </div>
-      </div>
-    </>
+        </>
+      )}
+      <S.MainPage>
+        <div>{props.children}</div>
+        {!isShowLoginAndSignUp && <div />}
+      </S.MainPage>
+    </S.Page>
   );
 }

@@ -126,7 +126,7 @@ export default function CreateEditMarket(): JSX.Element {
         <div>
           <label>상품내용</label>
           <div>{formState.errors.contents?.message}</div>
-          <input role="contents-input" type="text" {...register("contents")} />
+          {/* <input role="contents-input" type="text" {...register("contents")} /> */}
           {/* 테스트 코드위해 추가한 input */}
           {typeof window !== "undefined" && (
             <ReactQuill

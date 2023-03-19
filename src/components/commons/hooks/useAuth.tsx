@@ -2,7 +2,7 @@ import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useRecoilValueLoadable } from "recoil";
-import { restoreAccessTokenLoadable } from "../../../../commons/stores";
+import { restoreAccessTokenLoadable } from "../../../commons/stores";
 
 export const useAuth = (): void => {
   const router = useRouter();

@@ -2,11 +2,12 @@ import InfiniteScroll from "react-infinite-scroller";
 import { IUseditemQuestion } from "../../../../commons/types/generated/types";
 import { useQueryFetchUsedItemQuestions } from "../../../commons/hooks/customs/quries/useQueryFetchUsedItemQuestions";
 import QuestionListItem from "./questionListItem";
+import * as S from "./questionList.styles";
 
 export default function QuestionList(): JSX.Element {
   const { data, onLoadMore } = useQueryFetchUsedItemQuestions();
   return (
-    <div>
+    <S.CommentList>
       <InfiniteScroll
         pageStart={0}
         loadMore={onLoadMore}
@@ -19,6 +20,6 @@ export default function QuestionList(): JSX.Element {
           </div>
         )) ?? <></>}
       </InfiniteScroll>
-    </div>
+    </S.CommentList>
   );
 }

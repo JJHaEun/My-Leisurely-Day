@@ -6,6 +6,8 @@ import { onClickEditOpen } from "../../../onClickEditComment";
 import Answer from "../../itemAnswer/answerWrite/answerWrite";
 import { IPropsQuestionListItem } from "../questionWrite/question.types";
 import Question from "../questionWrite/questionWrite";
+import * as S from "./questionList.styles";
+import * as ST from "../../detail/usedItemDetail.styles";
 
 export default function QuestionListItem(
   props: IPropsQuestionListItem
@@ -21,35 +23,41 @@ export default function QuestionListItem(
   };
   return (
     <>
-      <div>
-        <div>
-          <div>
-            <div>
+      <S.CommentWrap>
+        <S.ComTitle>
+          <S.CommentMainTitle>
+            <ST.MarketPicture>
               {props.el.user.picture !== "" &&
               props.el.user.picture !== undefined ? (
-                <img
+                <S.UserProfile
                   src={`https://storage.googleapis.com/${String(
                     user?.fetchUserLoggedIn?.picture
                   )}`}
                 />
               ) : (
                 <div />
+                // 유저기본이미지
               )}
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
-              <div>{props.el.user.name}</div>
-              <div>{MessageDate(props.el.createdAt)}</div>
-            </div>
-          </div>
-          <div style={{ display: "flex", gap: 16 }}>
-            <img src={`/edit.png`} onClick={onClickEdit(setIsEdit)} />
-            <img src={`/delete.png`} onClick={onClickDelete(props.el._id)} />
-
+            </ST.MarketPicture>
+            <S.UsersInFo>
+              <S.Name>{props.el.user.name}</S.Name>
+              <S.Date>{MessageDate(props.el.createdAt)}</S.Date>
+            </S.UsersInFo>
+          </S.CommentMainTitle>
+          <S.DeleteEditAnswersWrap>
+            <S.DeleteEditImg
+              src={`/edit.png`}
+              onClick={onClickEdit(setIsEdit)}
+            />
+            <S.DeleteEditImg
+              src={`/delete.png`}
+              onClick={onClickDelete(props.el._id)}
+            />
             <button onClick={openAnswer}>답변</button>
-          </div>
-        </div>
-        <div>{props.el.contents}</div>
-      </div>
+          </S.DeleteEditAnswersWrap>
+        </S.ComTitle>
+        <S.Contents>{props.el.contents}</S.Contents>
+      </S.CommentWrap>
       {isEdit && <Question el={props.el} isEdit={true} setIsEdit={setIsEdit} />}
       {open && <Answer elQuestion={props.el} setOpen={setOpen} />}
     </>

@@ -11,7 +11,7 @@ export const useOnClickLogout = () => {
     await logoutUser();
     Modal.success({ title: "로그아웃 성공", content: "로그아웃되었습니다" });
 
-    refetch; // 얘 아니면 window.location.reload()
+    refetch(); // 얘 아니면 window.location.reload()
   };
   return {
     onClickLogout,

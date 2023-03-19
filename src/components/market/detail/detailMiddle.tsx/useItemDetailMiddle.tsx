@@ -3,62 +3,65 @@ import QuestionList from "../../itemQuestion/questionList/questionList";
 import Question from "../../itemQuestion/questionWrite/questionWrite";
 import KakaoMapDetail from "../../kakao/kakaomapDetail/kakaoMapDetail";
 import { IItemDetailProps } from "../usedItemDetail.types";
+import * as S from "../usedItemDetail.styles";
 
 export default function DetailMarketMiddle(
   props: IItemDetailProps
 ): JSX.Element {
   return (
-    <div>
-      <div>
-        <div>
+    <S.Under>
+      <S.DetailWrap>
+        <S.ProductDetailTitleWrap>
           <h1>상품정보</h1>
-        </div>
-        <div>
+        </S.ProductDetailTitleWrap>
+        <S.ContentsWrap>
           {typeof window !== "undefined" ? (
-            <div
+            <S.Contents
               dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(
                   String(props.data?.fetchUseditem.contents)
                 ),
               }}
-            ></div>
+            ></S.Contents>
           ) : (
             <div />
           )}
-        </div>
-        <div>
+        </S.ContentsWrap>
+        <S.Location>
+          {/* 위치 아이콘 */}
           <label>거래지역</label>
-        </div>
+        </S.Location>
         {props.data?.fetchUseditem.useditemAddress?.address !== undefined &&
         props.data?.fetchUseditem.useditemAddress?.address !== null &&
         props.data.fetchUseditem.useditemAddress.address !== "" ? (
           <KakaoMapDetail />
         ) : (
-          <div style={{ width: 860, height: 448 }}>주소없음</div>
+          <div>주소없음</div>
         )}
-      </div>
-      <div>
-        <div>
-          <h1>상점정보</h1>
-        </div>
-        <div>
-          <div>
+      </S.DetailWrap>
+      <S.MarketInfoWrap>
+        <S.MarketInFoTitleWrap>
+          <S.MarketInFoTitle>상점정보</S.MarketInFoTitle>
+        </S.MarketInFoTitleWrap>
+        <S.InFoMain>
+          <S.MarketPicture>
             {props.data?.fetchUseditem.seller?.picture !== "" &&
             props.data?.fetchUseditem.seller?.picture !== undefined ? (
-              <img
+              <S.MarketProfile
                 src={`https://storage.googleapis.com/${String(
                   props.data?.fetchUseditem.seller?.picture
                 )}`}
               />
             ) : (
               <div />
+              // 마켓 기본이미지
             )}
-          </div>
-          <span>{props.data?.fetchUseditem.seller?.name}</span>
-        </div>
+          </S.MarketPicture>
+          <S.InFoUser>{props.data?.fetchUseditem.seller?.name}</S.InFoUser>
+        </S.InFoMain>
         <Question />
         <QuestionList />
-      </div>
-    </div>
+      </S.MarketInfoWrap>
+    </S.Under>
   );
 }
