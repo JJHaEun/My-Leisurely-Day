@@ -29,11 +29,11 @@ export const MessageDate = (createdAt: any) => {
   } else if (elapsedTime < minute) {
     MessageDate = elapsedTime + "초 전";
   } else if (elapsedTime < hour) {
-    MessageDate = `${Math.trunc(elapsedTime / minute)} 분 전`;
+    MessageDate = `${Math.trunc(elapsedTime / minute)}분 전`;
   } else if (elapsedTime < day) {
-    MessageDate = `${Math.trunc(elapsedTime / hour)} 시간 전`;
+    MessageDate = `${Math.trunc(elapsedTime / hour)}시간 전`;
   } else if (elapsedTime < day * 15) {
-    MessageDate = `${Math.trunc(elapsedTime / day)} 일 전`;
+    MessageDate = `${Math.trunc(elapsedTime / day)}일 전`;
   }
   return MessageDate;
 };

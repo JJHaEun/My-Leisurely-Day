@@ -1,7 +1,11 @@
-export default function MarketMainPage(): JSX.Element {
+import { memo } from "react";
+import MarketMainList from "../../src/components/market/list/fetchUsedItems";
+
+function MarketMainPage(): JSX.Element {
   return (
     <>
-      <div></div>
+      <MarketMainList />
     </>
   );
 }
+export default memo(MarketMainPage);

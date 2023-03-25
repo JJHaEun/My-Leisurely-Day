@@ -4,7 +4,8 @@ export const Page = styled.div`
   width: 1920px;
 `;
 export const MainPage = styled.div`
-  width: 100%;
+  width: 100vw;
+
   display: flex;
   justify-content: center;
   /* gap: calc(39px - 21px); */

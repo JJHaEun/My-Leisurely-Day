@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import MainHeader from "./header/mainHeader/mainHeader";
 import SignInAndSignUpHeader from "./header/singIninAndSignUpHeader/singIninAndSignUpHeader";
 import * as S from "./index.styles";
+import LayoutSideBar from "./side/sidebar";
 
 interface ILayoutProps {
   children: JSX.Element;
@@ -25,8 +26,8 @@ export default function Layout(props: ILayoutProps): JSX.Element {
         </>
       )}
       <S.MainPage>
-        <div>{props.children}</div>
-        {!isShowLoginAndSignUp && <div />}
+        <>{props.children}</>
+        {!isShowLoginAndSignUp && <LayoutSideBar />}
       </S.MainPage>
     </S.Page>
   );
