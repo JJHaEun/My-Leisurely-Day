@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import MainBanner from "./banner/banner";
 import MainHeader from "./header/mainHeader/mainHeader";
 import SignInAndSignUpHeader from "./header/singIninAndSignUpHeader/singIninAndSignUpHeader";
 import * as S from "./index.styles";
@@ -22,11 +23,11 @@ export default function Layout(props: ILayoutProps): JSX.Element {
       {!isShowLoginAndSignUp && (
         <>
           <MainHeader />
-          {/* 베너 */}
+          <MainBanner />
         </>
       )}
       <S.MainPage>
-        <>{props.children}</>
+        <S.Children>{props.children}</S.Children>
         {!isShowLoginAndSignUp && <LayoutSideBar />}
       </S.MainPage>
     </S.Page>

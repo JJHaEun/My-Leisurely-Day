@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const MainHeaderWrap = styled.div`
   width: 100vw;
-  border-bottom: 1px solid #555555;
+  border-bottom: 1px solid #0066cc;
   padding: 40px 0;
   justify-content: space-between;
   display: flex;
@@ -30,7 +30,6 @@ export const UserInFo = styled.div`
 `;
 
 export const UserName = styled.span`
-  font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -69,6 +68,9 @@ export const UsersChoiceWrap = styled.div`
   display: flex;
   gap: 16px;
   align-items: center;
+  > span {
+    cursor: pointer;
+  }
 `;
 
 export const Menus = styled.span`

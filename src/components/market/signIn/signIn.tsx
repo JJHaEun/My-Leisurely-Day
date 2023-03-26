@@ -3,40 +3,52 @@ import { schemaSignIn } from "../../../commons/libraries/validations/signValidat
 import { ISignForm } from "./signIn.types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useOnClickSignIn } from "../../commons/hooks/useOnclickSignIn";
+import * as S from "./signIn.styles";
+import { useMovePage } from "../../commons/hooks/useMovePage";
 
 export default function SignIn(): JSX.Element {
   const { onClickSignIn } = useOnClickSignIn();
+  const { onClickMoveTo } = useMovePage();
   const { register, handleSubmit, formState } = useForm<ISignForm>({
     resolver: yupResolver(schemaSignIn),
     mode: "onChange",
   });
   return (
-    <div>
-      <h1>느린하루</h1>
+    <S.SignInMain>
+      <S.LogPageLogo>느린하루</S.LogPageLogo>
       <div>
-        <h2>로그인</h2>
-        <h3>Sign In</h3>
+        <S.Title>Sign In</S.Title>
       </div>
       <div>
         <form onSubmit={handleSubmit(onClickSignIn)}>
-          <div>
+          <S.InputWrap>
             <div>
-              <input type="email" {...register("email")} placeholder="Email" />
+              <S.Inputs
+                type="email"
+                {...register("email")}
+                placeholder="Email"
+              />
               <div>{formState.errors.email?.message}</div>
             </div>
             <div>
-              <input
+              <S.Inputs
                 type="password"
                 {...register("password")}
                 placeholder="Password"
               />
               <div>{formState.errors.password?.message}</div>
             </div>
-            <span>아직 회원이 아니신가요?</span>
-          </div>
-          <button>로그인</button>
+          </S.InputWrap>
+          <S.ButtonWrap>
+            <button>
+              <span>로그인</span>
+            </button>
+            <button type="button" onClick={onClickMoveTo(`/market/signUp`)}>
+              <span>회원가입</span>
+            </button>
+          </S.ButtonWrap>
         </form>
       </div>
-    </div>
+    </S.SignInMain>
   );
 }

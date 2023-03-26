@@ -1,11 +1,14 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { schemaSignUp } from "../../../commons/libraries/validations/signValidation";
+import { useMovePage } from "../../commons/hooks/useMovePage";
 import { useOnclickSignUp } from "../../commons/hooks/useOnclickSignUp";
 import { ISignUpForm } from "./signUp.types";
 
 export default function SignUp(): JSX.Element {
   const { onClickSignUp } = useOnclickSignUp();
+  const { onClickMoveTo } = useMovePage();
+
   const { register, handleSubmit, formState } = useForm<ISignUpForm>({
     resolver: yupResolver(schemaSignUp),
     mode: "onChange",
@@ -46,7 +49,7 @@ export default function SignUp(): JSX.Element {
             </div>
             <span>이미 아이디가 있으신가요?</span>
           </div>
-          <button>회원가입</button>
+          <button onClick={onClickMoveTo(`/market/signIn`)}>로그인</button>
         </form>
       </div>
     </div>

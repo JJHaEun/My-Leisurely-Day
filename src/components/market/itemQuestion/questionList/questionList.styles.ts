@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { MarketProfile } from "../../detail/usedItemDetail.styles";
 
 export const CommentList = styled.div`
-  width: 385px;
+  width: 340px;
   height: calc((115px + 36px) * 3);
   overflow: auto;
   -ms-overflow-style: none; /* IE and Edge */

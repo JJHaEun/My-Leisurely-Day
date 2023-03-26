@@ -15,33 +15,29 @@ export default function LayoutSideBar(): JSX.Element {
     }
   }, []);
   return (
-    <div>
-      <h2>최근본 목록</h2>
+    <S.SideWrap>
+      <h1>최근 본 목록</h1>
       <div>
         {todayList
           ?.filter((_, i: number) => Number([i]) <= 2)
           .map((el: IUseditem) => (
-            <div key={el._id}>
-              <h3 onClick={onClickMoveTo(`/market/${el._id}`)}>{el.name}</h3>
-              <div>
-                <span>{el.price}</span>
-                <S.Remarks>{el.remarks}</S.Remarks>
-              </div>
-
+            <S.Today key={el._id}>
+              <S.Name onClick={onClickMoveTo(`/market/${el._id}`)}>
+                {el.name}
+              </S.Name>
               {el.images?.[0] !== undefined && el.images?.[0] !== "" ? (
                 <div key={uuidv4()}>
-                  <img
+                  <S.ProductImg
                     src={`https://storage.googleapis.com/${el.images?.[0]}`}
                     alt=""
-                    style={{ width: "30px" }}
                   />
                 </div>
               ) : (
-                <img src="/grayBox.png" alt="" style={{ width: "30px" }} />
+                <S.Default />
               )}
-            </div>
+            </S.Today>
           ))}
       </div>
-    </div>
+    </S.SideWrap>
   );
 }

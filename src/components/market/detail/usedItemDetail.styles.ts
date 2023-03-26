@@ -43,7 +43,7 @@ export const ItemWrap = styled.div`
   padding-left: 68px;
 `;
 export const ItemTitleWrap = styled.div`
-  border-bottom: 3px solid #555555;
+  border-bottom: 3px solid #acc4e5;
   width: 821px;
 `;
 export const ItemName = styled.h1`
@@ -110,7 +110,7 @@ export const Remarks = styled.div`
 export const Tags = styled.span`
   width: auto;
   height: 30.51px;
-  background: #cc3399;
+  background: #408fff;
   border-radius: 13px;
   text-align: center;
   padding: 10px 17px;
@@ -130,7 +130,7 @@ export const TagsWrap = styled.div`
   padding-bottom: 32.49px;
   width: 820px;
   height: calc(31.51px + 32.49px + 14px);
-  border-bottom: 1px solid #c0c0c0;
+  border-bottom: 1px solid #99aecc;
 `;
 export const ButtonWrap = styled.div`
   display: flex;
@@ -219,12 +219,12 @@ export const DetailWrap = styled.div`
   flex-direction: column;
   padding-right: 37px;
   height: 1170px;
-  border-right: 1px solid #555555;
+  border-right: 1px solid #acc4e5;
 `;
 export const ProductDetailTitleWrap = styled.div`
   padding-bottom: 30px;
   width: 925px;
-  border-bottom: 3px solid #555555;
+  border-bottom: 3px solid #acc4e5;
   > h1 {
     font-weight: 700;
     font-size: 32px;
@@ -270,9 +270,9 @@ export const MarketInfoWrap = styled.div`
   padding-left: 34px;
 `;
 export const MarketInFoTitleWrap = styled.div`
-  border-bottom: 3px solid #555555;
+  border-bottom: 3px solid #acc4e5;
   padding-bottom: 30px;
-  width: 385px;
+  width: 340px;
 `;
 export const MarketInFoTitle = styled.h1`
   font-weight: 700;
@@ -289,7 +289,8 @@ export const InFoMain = styled.div`
   padding: 32px 0 32px calc(50px - 37px);
   align-items: center;
   gap: 33px;
-  border-bottom: 1px solid #555555;
+  width: 340px;
+  border-bottom: 1px solid #acc4e5;
 `;
 export const MarketPicture = styled.div`
   width: 75px;
@@ -311,7 +312,8 @@ export const InFoUser = styled.span`
 export const CommentTitleWrap = styled.div`
   padding-bottom: 32px;
   padding-top: 76px;
-  border-bottom: 3px solid #555555;
+  border-bottom: 3px solid #acc4e5;
+
   & > h1 {
     font-weight: 700;
     font-size: 32px;

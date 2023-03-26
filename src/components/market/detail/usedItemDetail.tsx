@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { useDeleteUsedItem } from "../../commons/hooks/useOnclickDelete";
 import { onClickPushMyBasket } from "../../commons/hooks/event/onClickPushMyBasket";
 import { useOnClickBuy } from "../../commons/hooks/onClickBuy";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 export default function DetailMarket(): JSX.Element {
   const router = useRouter();
@@ -71,12 +72,13 @@ export default function DetailMarket(): JSX.Element {
               <S.Remarks>{data?.fetchUseditem.remarks}</S.Remarks>
             </S.RemarksWrap>
             <S.TagsWrap>
-              {data?.fetchUseditem.tags?.map((el) => (
-                // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-                <S.Tags key={uuidv4() + 1}>
-                  {el.replaceAll(el, `# ${el}`).split(" ")}
-                </S.Tags>
-              ))}
+              {data?.fetchUseditem.tags &&
+                data?.fetchUseditem.tags?.map((el) => (
+                  // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+                  <S.Tags key={uuidv4() + 1}>
+                    {el.replaceAll(el, `# ${el}`).split(" ")}
+                  </S.Tags>
+                ))}
             </S.TagsWrap>
             <S.ButtonWrap>
               <S.PickBt>
@@ -85,11 +87,11 @@ export default function DetailMarket(): JSX.Element {
               <S.PushMyBasket
                 onClick={() => {
                   data?.fetchUseditem != null &&
-                    onClickBasket(data?.fetchUseditem);
+                    onClickBasket(data?.fetchUseditem)();
                 }}
               >
+                <ShoppingCartIcon />
                 장바구니
-                {/* 장바구니 아이콘 */}
               </S.PushMyBasket>
               <S.Buy onClick={onClickBuy}>구매하기</S.Buy>
             </S.ButtonWrap>

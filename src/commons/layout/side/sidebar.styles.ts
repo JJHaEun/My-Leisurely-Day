@@ -1,54 +1,44 @@
 import styled from "@emotion/styled";
-// import { Menu } from "antd";
-
-// export const SideMenuWrap = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-
-//   font-family: "UhBeeRice";
-// `;
-
-// export const SideMenu = styled.span`
-//   :hover {
-//     color: steelblue;
-//     cursor: pointer;
-//   }
-// `;
-// export const LeftMeNu = styled(Menu)`
-//   width: 100px;
-//   top: 50px;
-//   position: sticky;
-//   z-index: 10;
-//   font-family: "UhBeeRice";
-//   opacity: 0.5;
-//   :hover {
-//     opacity: 1;
-//   }
-
-//   :where(
-//       .css-dev-only-do-not-override-ixblex
-//     ).ant-menu-light.ant-menu-horizontal
-//     > .ant-menu-item-selected::after,
-//   :where(
-//       .css-dev-only-do-not-override-ixblex
-//     ).ant-menu-light.ant-menu-horizontal
-//     > .ant-menu-submenu-selected::after {
-//     border-bottom-width: 2px;
-//     border-bottom-color: orange;
-//   }
-//   .anticon > * {
-//     color: #e4ddce;
-//   }
-
-//   .ant-menu-title-content {
-//     color: #b039cc;
-//   }
-//   /* position: sticky; */
-// `;
-export const Remarks = styled.span`
+export const SideWrap = styled.div`
+  height: auto;
+  width: 155px;
+  background: #ffffff;
+  border: 1px solid #000000;
+  position: fixed;
+  top: 220px;
+  left: 1500px;
+  padding: 28px 34px 32px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 50px;
+  > h1 {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: -0.05em;
+    padding-bottom: 22px;
+  }
+`;
+export const Default = styled.div`
+  width: 100%;
+  height: 85px;
+  margin-bottom: 10px;
+  background: #c4c4c4;
+`;
+export const Name = styled.h3`
   width: 120px;
+  font-weight: 600;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+`;
+
+export const ProductImg = styled.img`
+  width: 100%;
+  height: 85px;
+  margin-bottom: 10px;
+`;
+export const Today = styled.div`
+  cursor: pointer;
 `;

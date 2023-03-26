@@ -3,7 +3,8 @@ import styled from "@emotion/styled";
 export const CommentTitleWrap = styled.div`
   padding-bottom: 32px;
   padding-top: 76px;
-  border-bottom: 3px solid #555555;
+  width: 340px;
+  border-bottom: 3px solid #acc4e5;
   > h1 {
     font-weight: 700;
     font-size: 32px;
@@ -18,13 +19,14 @@ export const CommentTitleWrap = styled.div`
 export const CommentWrap = styled.div`
   padding-top: 29px;
   padding-bottom: 55px;
+  width: 340px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 11px;
 `;
 export const CommentBox = styled.textarea`
-  width: 385px;
+  width: 340px;
   height: 147px;
   resize: none;
   border: none;
@@ -35,7 +37,7 @@ export const CommentButton = styled.button`
   width: 116px;
 
   height: 42px;
-  background: #ffe004;
+  background: #1e9eff;
   border: none;
   font-weight: 700;
   font-size: 20px;
