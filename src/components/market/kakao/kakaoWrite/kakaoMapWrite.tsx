@@ -72,7 +72,7 @@ export default function KakaoMapWrite(props: IKakaoMapProps): JSX.Element {
 
   return (
     <>
-      <div id="map" style={{ width: 860, height: 448 }}></div>
+      <div id="map" style={{ width: "20em", height: "15rem" }}></div>
     </>
   );
 }

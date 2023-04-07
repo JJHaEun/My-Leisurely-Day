@@ -33,22 +33,3 @@ export const CommentBox = styled.textarea`
   outline: none;
   background: #e9e9e9;
 `;
-export const CommentButton = styled.button`
-  width: 116px;
-
-  height: 42px;
-  background: #1e9eff;
-  border: none;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 100%;
-  /* or 20px */
-
-  text-align: center;
-  letter-spacing: -0.05em;
-
-  color: #000000;
-  :hover {
-    cursor: pointer;
-  }
-`;

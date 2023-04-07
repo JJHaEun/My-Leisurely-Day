@@ -54,7 +54,7 @@ export default function DetailMarket(): JSX.Element {
                 <img
                   src={`/edit.png`}
                   onClick={onClickMoveTo(
-                    `/market/${String(router.query.usedItemId)}/edit`
+                    `/market/${String(router.query.productId)}/edit`
                   )}
                 />
                 <img src={`/delete.png`} onClick={onClickDelete} />

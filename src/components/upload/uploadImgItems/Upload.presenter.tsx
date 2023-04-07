@@ -1,5 +1,6 @@
 import type { IUploadImagesBoardUIProps } from "./Upload.types";
 import * as S from "./Upload.styles";
+import WallpaperIcon from "@mui/icons-material/Wallpaper";
 export default function UploadImagesBoardUI(
   props: IUploadImagesBoardUIProps
 ): JSX.Element {
@@ -7,8 +8,7 @@ export default function UploadImagesBoardUI(
     <>
       {props.imageUrl === "" ? (
         <S.UploadBoxContent onClick={props.onClickImageChoice}>
-          <div>+</div>
-          <div>Upload</div>
+          <S.Img />
         </S.UploadBoxContent>
       ) : (
         <S.UploadImages

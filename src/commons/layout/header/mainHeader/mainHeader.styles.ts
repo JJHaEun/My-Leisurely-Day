@@ -4,7 +4,7 @@ export const MainHeaderWrap = styled.div`
   width: 100vw;
   border-bottom: 1px solid #0066cc;
   padding: 40px 0;
-  justify-content: space-between;
+  justify-content: flex-end;
   display: flex;
   text-align: center;
 `;

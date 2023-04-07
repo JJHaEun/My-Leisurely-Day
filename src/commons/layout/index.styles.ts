@@ -14,4 +14,5 @@ export const Children = styled.div`
   width: 80vw;
   display: flex;
   justify-content: center;
+  padding-bottom: 10rem;
 `;

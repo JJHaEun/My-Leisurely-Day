@@ -8,7 +8,6 @@ import { useOnclickCreateUpdateUsedItem } from "../../commons/hooks/useonClickCr
 import { useToggleModal } from "../../commons/hooks/useToggle";
 import UploadImagesItem from "../../upload/uploadImgItems/Upload.container";
 import KakaoMapWrite from "../kakao/kakaoWrite/kakaoMapWrite";
-import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import DaumPostcodeEmbed from "react-daum-postcode";
 import { useQueryFetchUsedItem } from "../../commons/hooks/customs/quries/useQueryFetchUsedItem";
@@ -16,10 +15,8 @@ import { IUseCreateForm } from "./createEditUsedItem.types";
 import { useReactQuill } from "../../onChangeContents";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { usedItemSchema } from "../../../commons/libraries/validations/usedItemValidation";
-
-const ReactQuill = dynamic(async () => await import("react-quill"), {
-  ssr: false,
-});
+import * as S from "./createEditUsedItem.styles";
+import * as ST from "../../../commons/libraries/buttonCreate";
 export default function CreateEditMarket(): JSX.Element {
   const { onChangeAddress, address } = useOnChangeAddress();
   const {
@@ -88,92 +85,96 @@ export default function CreateEditMarket(): JSX.Element {
           <DaumPostcodeEmbed onComplete={onChange} />
         </Modal>
       )}
-      <h1>상품{isEdit ? "수정" : "등록"}</h1>
       <form
         onSubmit={handleSubmit(
           isEdit ? onClickUpdateUsedItem : onClickCreateUsedItem
         )}
       >
-        <div>
-          <label>상품명</label>
-          <input
-            role="name-input"
-            type="text"
-            placeholder="상품명을 작성해주세요"
-            {...register("name")}
-          />
-          <div>{formState.errors.name?.message}</div>
-        </div>
-        <div>
+        <S.NamePrice>
+          <S.ImportGroup>
+            <label>상품명</label>
+            <S.InputNamePrice
+              role="name-input"
+              type="text"
+              placeholder="상품명을 작성해주세요"
+              {...register("name")}
+            />
+            <S.ErrMessage>{formState.errors.name?.message}</S.ErrMessage>
+          </S.ImportGroup>
+          <S.ImportGroup>
+            <label>판매 가격</label>
+            <S.InputNamePrice
+              role="price-input"
+              type="text"
+              placeholder="판매 가격을 입력해주세요"
+              {...register("price")}
+            />
+            <S.ErrMessage>{formState.errors.price?.message}</S.ErrMessage>
+          </S.ImportGroup>
+        </S.NamePrice>
+        <S.ImportGroup>
           <label>상품요약</label>
-          <input
+          <S.Input
             role="remarks-input"
             type="text"
             placeholder="상품요약을 작성해주세요"
             {...register("remarks")}
           />
-          <div>{formState.errors.remarks?.message}</div>
-        </div>
-        <div>
-          <label>판매 가격</label>
-          <input
-            role="price-input"
-            type="text"
-            placeholder="판매 가격을 입력해주세요"
-            {...register("price")}
-          />
-        </div>
-        <div>
+          <S.ErrMessage>{formState.errors.remarks?.message}</S.ErrMessage>
+        </S.ImportGroup>
+        <S.ImportGroup>
           <label>상품내용</label>
-          <div>{formState.errors.contents?.message}</div>
+          <S.ErrMessage>{formState.errors.contents?.message}</S.ErrMessage>
           {/* <input role="contents-input" type="text" {...register("contents")} /> */}
           {/* 테스트 코드위해 추가한 input */}
           {typeof window !== "undefined" && (
-            <ReactQuill
+            <S.ContentsBox
               onChange={onChangeContents(setValue, trigger)}
               placeholder="상품을 설명해주세요"
               //   {...register("contents")}
               value={contents ? contents : data?.fetchUseditem.contents}
             />
           )}
-        </div>
-        <div>
+        </S.ImportGroup>
+        <S.TagGroup>
           <label>태그입력</label>
-          <input
+          <S.TagInput
             type="text"
             placeholder="#태그 #태그 #태그"
             {...register("tags")}
             defaultValue={data?.fetchUseditem.tags ?? ""}
           />
-          <div></div>
-        </div>
-        <div>
-          <label>거래위치</label>
-          {/* 카카오맵 */}
-          <KakaoMapWrite address={address} />
-          <div>
-            <input
-              type="text"
-              placeholder="07250"
-              readOnly
-              {...register("useditemAddress.zipcode")}
-            />
-            <button type="button" onClick={ToggleModal}>
-              우편번호 검색
-            </button>
-          </div>
-          <div>
-            <input type="text" {...register("useditemAddress.address")} />
-            <input
-              type="text"
-              {...register("useditemAddress.addressDetail")}
-              //   defaultValue={
-              //     data?.fetchUseditem.useditemAddress?.addressDetail ?? ""
-              //   }
-            />
-          </div>
-        </div>
-        <div>
+        </S.TagGroup>
+        <S.Location>
+          <S.MapWrap>
+            <label>거래위치</label>
+            <KakaoMapWrite address={address} />
+          </S.MapWrap>
+          <S.AddressGroup>
+            <S.AddressSearchGroup>
+              <input
+                type="text"
+                placeholder="07250"
+                readOnly
+                {...register("useditemAddress.zipcode")}
+              />
+              <button type="button" onClick={ToggleModal}>
+                우편번호 검색
+              </button>
+            </S.AddressSearchGroup>
+            <S.AddressInputGroup>
+              <input type="text" {...register("useditemAddress.address")} />
+              <input
+                type="text"
+                {...register("useditemAddress.addressDetail")}
+                //   defaultValue={
+                //     data?.fetchUseditem.useditemAddress?.addressDetail ?? ""
+                //   }
+              />
+            </S.AddressInputGroup>
+          </S.AddressGroup>
+        </S.Location>
+        <S.PhotoWrap>
           <label>사진첨부</label>
           {imageUrls.map((el, index) => (
             <div key={index}>
@@ -184,8 +185,10 @@ export default function CreateEditMarket(): JSX.Element {
               />
             </div>
           ))}
-        </div>
-        <button role="submit-button">{isEdit ? "수정" : "등록"}하기</button>
+        </S.PhotoWrap>
+        <ST.CommentButton role="submit-button">
+          {isEdit ? "수정" : "등록"}하기
+        </ST.CommentButton>
       </form>
     </div>
   );
