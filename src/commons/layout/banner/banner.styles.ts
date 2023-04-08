@@ -4,7 +4,7 @@ export const MainBannerWrap = styled.div`
   width: 1920px;
   height: 157px;
   display: flex;
-  border-bottom: 1px solid #0066cc;
+  border-bottom: 1px solid #99bbcc;
   padding: 57px 0 56.69px 100px;
   gap: 45vw;
 `;

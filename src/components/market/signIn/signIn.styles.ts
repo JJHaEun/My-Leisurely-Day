@@ -1,24 +1,22 @@
 import styled from "@emotion/styled";
 
+interface ISignErr {
+  error?: string;
+}
+
 export const SignInMain = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 1188px;
-  background: #f8f8f8;
   padding-top: 193px;
+  padding-bottom: 200px;
 `;
-export const LogPageLogo = styled.h1`
-  font-size: 60px;
-  font-family: "Somi", "Franklin Gothic Medium", "Arial Narrow", Arial,
-    sans-serif;
-  padding-bottom: 80px;
-`;
-export const Inputs = styled.input`
-  background: #f6f6f6;
+
+export const Inputs = styled.input<ISignErr>`
   border: none;
-  border-bottom: 2px solid #99bbcc;
+  border-bottom: ${(props) =>
+    props.error ? "2px solid red" : "2px solid #99bbcc"};
   width: 786.96px;
   height: 64px;
   padding: 25px 37.28px;
@@ -32,12 +30,14 @@ export const Inputs = styled.input`
   align-items: center;
 
   ::placeholder {
-    color: #99aecc;
+    color: ${(props) => (props.error ? "red" : "#99bbcc")};
   }
 `;
 export const Title = styled.h2`
   font-size: 48px;
-  padding-bottom: 25px;
+  padding-bottom: 40px;
+  font-family: "Somi", "Franklin Gothic Medium", "Arial Narrow", Arial,
+    sans-serif;
 `;
 export const InputWrap = styled.div`
   display: flex;

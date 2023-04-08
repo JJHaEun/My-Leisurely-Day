@@ -4,6 +4,9 @@ import { schemaSignUp } from "../../../commons/libraries/validations/signValidat
 import { useMovePage } from "../../commons/hooks/useMovePage";
 import { useOnclickSignUp } from "../../commons/hooks/useOnclickSignUp";
 import { ISignUpForm } from "./signUp.types";
+import * as S from "./signUp.styles";
+import * as ST from "../signIn/signIn.styles";
+import { SignErr, SignWrap } from "../../commons/signStyles/sign.styles";
 
 export default function SignUp(): JSX.Element {
   const { onClickSignUp } = useOnclickSignUp();
@@ -14,44 +17,60 @@ export default function SignUp(): JSX.Element {
     mode: "onChange",
   });
   return (
-    <div>
-      <h1>느린하루</h1>
+    <S.SignUpMain>
       <div>
-        <h2>회원가입</h2>
-        <h3>Sign Up</h3>
+        <ST.Title>회원가입</ST.Title>
       </div>
       <div>
         <form onSubmit={handleSubmit(onClickSignUp)}>
-          <div>
-            <div>
-              <input type="text" {...register("name")} placeholder="Name" />
-              <div>{formState.errors.name?.message}</div>
-            </div>
-            <div>
-              <input type="email" {...register("email")} placeholder="Email" />
-              <div>{formState.errors.email?.message}</div>
-            </div>
-            <div>
-              <input
-                type="password"
-                {...register("password")}
-                placeholder="Password"
+          <S.SignUpInputWrap>
+            <SignWrap>
+              <ST.Inputs
+                type="text"
+                {...register("name")}
+                placeholder="Name"
+                error={formState.errors.name?.message}
               />
-              <div>{formState.errors.password?.message}</div>
-            </div>
-            <div>
-              <input
-                type="password"
-                {...register("passwordCheck")}
-                placeholder="PasswordCheck"
+              <SignErr>{formState.errors.name?.message}</SignErr>
+            </SignWrap>
+            <SignWrap>
+              <ST.Inputs
+                type="email"
+                {...register("email")}
+                placeholder="Email"
+                error={formState.errors.email?.message}
               />
-              <div>{formState.errors.passwordCheck?.message}</div>
-            </div>
-            <span>이미 아이디가 있으신가요?</span>
-          </div>
-          <button onClick={onClickMoveTo(`/market/signIn`)}>로그인</button>
+              <SignErr>{formState.errors.email?.message}</SignErr>
+            </SignWrap>
+            <S.PasswordInputWrap>
+              <SignWrap>
+                <ST.Inputs
+                  type="password"
+                  {...register("password")}
+                  placeholder="Password"
+                  error={formState.errors.password?.message}
+                />
+                <SignErr>{formState.errors.password?.message}</SignErr>
+              </SignWrap>
+              <SignWrap>
+                <ST.Inputs
+                  type="password"
+                  {...register("passwordCheck")}
+                  placeholder="PasswordCheck"
+                  error={formState.errors.passwordCheck?.message}
+                />
+                <SignErr>{formState.errors.passwordCheck?.message}</SignErr>
+              </SignWrap>
+            </S.PasswordInputWrap>
+          </S.SignUpInputWrap>
+          <ST.ButtonWrap>
+            <button>회원가입</button>
+            <button type="button" onClick={onClickMoveTo(`/market/signIn`)}>
+              로그인
+            </button>
+          </ST.ButtonWrap>
         </form>
       </div>
-    </div>
+    </S.SignUpMain>
   );
 }

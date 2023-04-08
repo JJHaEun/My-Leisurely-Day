@@ -4,6 +4,7 @@ import { ISignForm } from "./signIn.types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useOnClickSignIn } from "../../commons/hooks/useOnclickSignIn";
 import * as S from "./signIn.styles";
+import { SignErr, SignWrap } from "../../commons/signStyles/sign.styles";
 import { useMovePage } from "../../commons/hooks/useMovePage";
 
 export default function SignIn(): JSX.Element {
@@ -15,32 +16,33 @@ export default function SignIn(): JSX.Element {
   });
   return (
     <S.SignInMain>
-      <S.LogPageLogo>느린하루</S.LogPageLogo>
       <div>
-        <S.Title>Sign In</S.Title>
+        <S.Title>로그인</S.Title>
       </div>
       <div>
         <form onSubmit={handleSubmit(onClickSignIn)}>
           <S.InputWrap>
-            <div>
+            <SignWrap>
               <S.Inputs
                 type="email"
                 {...register("email")}
                 placeholder="Email"
+                error={formState.errors.email?.message}
               />
-              <div>{formState.errors.email?.message}</div>
-            </div>
-            <div>
+              <SignErr>{formState.errors.email?.message}</SignErr>
+            </SignWrap>
+            <SignWrap>
               <S.Inputs
                 type="password"
                 {...register("password")}
                 placeholder="Password"
+                error={formState.errors.password?.message}
               />
-              <div>{formState.errors.password?.message}</div>
-            </div>
+              <SignErr>{formState.errors.password?.message}</SignErr>
+            </SignWrap>
           </S.InputWrap>
           <S.ButtonWrap>
-            <button>
+            <button type="submit">
               <span>로그인</span>
             </button>
             <button type="button" onClick={onClickMoveTo(`/market/signUp`)}>

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { gql, useMutation } from "@apollo/client";
-import type {
+import {
   IMutation,
   IMutationLoginUserArgs,
 } from "../../../../../commons/types/generated/types";

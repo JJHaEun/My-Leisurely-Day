@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const MainHeaderWrap = styled.div`
   width: 100vw;
-  border-bottom: 1px solid #0066cc;
+  border-bottom: 1px solid #99bbcc;
   padding: 40px 0;
   justify-content: flex-end;
   display: flex;

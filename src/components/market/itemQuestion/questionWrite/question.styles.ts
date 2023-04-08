@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { CommentButton } from "../../../../commons/libraries/buttonCreate";
 
 export const CommentTitleWrap = styled.div`
   padding-bottom: 32px;
@@ -33,3 +34,5 @@ export const CommentBox = styled.textarea`
   outline: none;
   background: #e9e9e9;
 `;
+
+export const CreateEditProduct = styled(CommentButton)``;
