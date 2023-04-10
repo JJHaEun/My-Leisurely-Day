@@ -9,8 +9,8 @@ export const SignInMain = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
-  padding-top: 193px;
-  padding-bottom: 200px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 `;
 
 export const Inputs = styled.input<ISignErr>`
@@ -36,7 +36,7 @@ export const Inputs = styled.input<ISignErr>`
 export const Title = styled.h2`
   font-size: 48px;
   padding-bottom: 40px;
-  font-family: "Somi", "Franklin Gothic Medium", "Arial Narrow", Arial,
+  font-family: "Cafe24", "Franklin Gothic Medium", "Arial Narrow", Arial,
     sans-serif;
 `;
 export const InputWrap = styled.div`

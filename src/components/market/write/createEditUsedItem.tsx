@@ -12,7 +12,7 @@ import "react-quill/dist/quill.snow.css";
 import DaumPostcodeEmbed from "react-daum-postcode";
 import { useQueryFetchUsedItem } from "../../commons/hooks/customs/quries/useQueryFetchUsedItem";
 import { IUseCreateForm } from "./createEditUsedItem.types";
-import { useReactQuill } from "../../onChangeContents";
+import { useReactQuill } from "../../commons/hooks/event/onChangeContents";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { usedItemSchema } from "../../../commons/libraries/validations/usedItemValidation";
 import * as S from "./createEditUsedItem.styles";
@@ -98,18 +98,18 @@ export default function CreateEditMarket(): JSX.Element {
               type="text"
               placeholder="상품명을 작성해주세요"
               {...register("name")}
+              error={formState.errors.name?.message}
             />
-            <S.ErrMessage>{formState.errors.name?.message}</S.ErrMessage>
           </S.ImportGroup>
           <S.ImportGroup>
             <label>판매 가격</label>
             <S.InputNamePrice
               role="price-input"
               type="text"
-              placeholder="판매 가격을 입력해주세요"
+              placeholder="판매 가격을 입력해주세요 (숫자만 입력)"
               {...register("price")}
+              error={formState.errors.price?.message}
             />
-            <S.ErrMessage>{formState.errors.price?.message}</S.ErrMessage>
           </S.ImportGroup>
         </S.NamePrice>
         <S.ImportGroup>
@@ -119,8 +119,8 @@ export default function CreateEditMarket(): JSX.Element {
             type="text"
             placeholder="상품요약을 작성해주세요"
             {...register("remarks")}
+            error={formState.errors.name?.message}
           />
-          <S.ErrMessage>{formState.errors.remarks?.message}</S.ErrMessage>
         </S.ImportGroup>
         <S.ImportGroup>
           <label>상품내용</label>
@@ -131,8 +131,10 @@ export default function CreateEditMarket(): JSX.Element {
             <S.ContentsBox
               onChange={onChangeContents(setValue, trigger)}
               placeholder="상품을 설명해주세요"
+              role="contents-input"
               //   {...register("contents")}
               value={contents ? contents : data?.fetchUseditem.contents}
+              error={formState.errors.contents?.message}
             />
           )}
         </S.ImportGroup>
@@ -186,9 +188,11 @@ export default function CreateEditMarket(): JSX.Element {
             </div>
           ))}
         </S.PhotoWrap>
-        <ST.CommentButton role="submit-button">
-          {isEdit ? "수정" : "등록"}하기
-        </ST.CommentButton>
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <ST.CommentButton role="submit-button">
+            {isEdit ? "수정" : "등록"}하기
+          </ST.CommentButton>
+        </div>
       </form>
     </div>
   );

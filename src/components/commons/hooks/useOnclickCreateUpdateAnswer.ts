@@ -17,7 +17,6 @@ export const useOnClickCreateUpdateQuestionAnswer = () => {
 
   const onCreateAnswer =
     (useditemQuestion?: IUseditemQuestion) =>
-    (setOpen?: Dispatch<SetStateAction<boolean>>) =>
     async (data: CreateAnswerFrom): Promise<void> => {
       if (typeof useditemQuestion?._id !== "string") {
         Modal.info({ content: "다시시도해주세요" });
@@ -42,7 +41,6 @@ export const useOnClickCreateUpdateQuestionAnswer = () => {
             });
           },
         });
-        setOpen?.(false);
         Modal.success({ content: "답변완료" });
       } catch (error) {
         if (error instanceof Error) {

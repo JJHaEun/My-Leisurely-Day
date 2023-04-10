@@ -1,5 +1,5 @@
-import { useMutationDeleteUsedItemQuestion } from "./commons/hooks/customs/mutations/useMutationDeleteUsedItemQuestion";
-import { IPrev } from "./market/itemQuestion/questionWrite/question.types";
+import { IPrev } from "../../../market/itemQuestion/questionWrite/question.types";
+import { useMutationDeleteUsedItemQuestion } from "../customs/mutations/useMutationDeleteUsedItemQuestion";
 
 export const onClickDeleteQuestion = () => {
   const [deleteUseditemQuestion] = useMutationDeleteUsedItemQuestion();

@@ -16,10 +16,6 @@ export const useOnclickCreateUpdateUsedItem = () => {
   const [updateUseditem] = useMutationUpdateUsedItem();
   const { data } = useQueryFetchUsedItem();
 
-  // const onChangeTags = (setValue: UseFormSetValue<IUseCreateForm>) => () => {
-  //   setValue("tags", tags.splice(Number("#")));
-  // };
-
   const onClickCreateUsedItem = async (data: IUseCreateForm): Promise<void> => {
     try {
       const result = await createUseditem({

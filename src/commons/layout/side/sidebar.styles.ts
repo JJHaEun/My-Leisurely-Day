@@ -3,7 +3,7 @@ export const SideWrap = styled.div`
   height: auto;
   width: 155px;
   background: #ffffff;
-  border: 1px solid #000000;
+  border: 1px solid #99bbcc;
   position: fixed;
   top: 220px;
   left: 1500px;

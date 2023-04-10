@@ -1,6 +1,6 @@
 import { Modal } from "antd";
 import { useRouter } from "next/router";
-import { useMutationCreatePointTransactionOfBuyingAndSelling } from "./customs/mutations/useMutationCreatePointTransactionBuyingSelling";
+import { useMutationCreatePointTransactionOfBuyingAndSelling } from "../customs/mutations/useMutationCreatePointTransactionBuyingSelling";
 
 export const useOnClickBuy = () => {
   const [createPointTransactionOfBuyingAndSelling] =

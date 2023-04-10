@@ -21,10 +21,8 @@ export default function LayoutSideBar(): JSX.Element {
         {todayList
           ?.filter((_, i: number) => Number([i]) <= 2)
           .map((el: IUseditem) => (
-            <S.Today key={el._id}>
-              <S.Name onClick={onClickMoveTo(`/market/${el._id}`)}>
-                {el.name}
-              </S.Name>
+            <S.Today key={el._id} onClick={onClickMoveTo(`/market/${el._id}`)}>
+              <S.Name>{el.name}</S.Name>
               {el.images?.[0] !== undefined && el.images?.[0] !== "" ? (
                 <div key={uuidv4()}>
                   <S.ProductImg

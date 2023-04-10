@@ -3,13 +3,13 @@ import { IUseditemQuestionAnswer } from "../../../../commons/types/generated/typ
 import { useQueryFetchUsedItemQuestionAnswers } from "../../../commons/hooks/customs/quries/useQueryFetchUsedItemQuestionAnswers";
 import { IPropsAnswerList } from "../answerWrite/answer.types";
 import AnswerListItem from "./answerListItem";
-
+import { AnswersList } from "./answerList.styles";
 export default function AnswerList(props: IPropsAnswerList): JSX.Element {
   const { data, onLoadMore } = useQueryFetchUsedItemQuestionAnswers(
     props.elQuestion
   );
   return (
-    <div>
+    <AnswersList>
       <InfiniteScroll
         pageStart={0}
         loadMore={onLoadMore}
@@ -24,6 +24,6 @@ export default function AnswerList(props: IPropsAnswerList): JSX.Element {
           )
         ) ?? <></>}
       </InfiniteScroll>
-    </div>
+    </AnswersList>
   );
 }

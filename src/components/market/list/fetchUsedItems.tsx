@@ -3,7 +3,7 @@ import { MessageDate } from "../../../commons/libraries/date";
 import { IUseditem } from "../../../commons/types/generated/types";
 import { useQueryFetchUsedItems } from "../../commons/hooks/customs/quries/useQueryFetchUsedItems";
 import { onClickAddSesstion } from "../../commons/hooks/event/onClickAddSesstion";
-import * as S from "./fetchUsedItem.styles";
+import * as S from "./fetchUsedItems.styles";
 import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 export default function MarketMainList(): JSX.Element {
   const { onLoadMore, data } = useQueryFetchUsedItems();

@@ -23,7 +23,7 @@ export default function GetWeatherAPI(): JSX.Element {
               // 앞으로의 날씨 3일
               <div key={el.date}>
                 <img src={el.day.condition.icon} />
-                <S.Day>{el.date}</S.Day>
+                <S.Day>{el.date.slice(5)}</S.Day>
               </div>
             ))}
           </S.ThreeDays>

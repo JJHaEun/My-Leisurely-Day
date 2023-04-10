@@ -1,5 +1,10 @@
+import { ShopFilled } from "@ant-design/icons";
 import styled from "@emotion/styled";
 import { Carousel } from "antd";
+
+interface IPicked {
+  picked?: number;
+}
 
 export const TopMainWrap = styled.div`
   display: flex;
@@ -110,15 +115,14 @@ export const Remarks = styled.div`
 export const Tags = styled.span`
   width: auto;
   height: 30.51px;
-  background: #408fff;
+  background: #99bbcc;
   border-radius: 13px;
   text-align: center;
-  padding: 10px 17px;
+  padding: 7px 17px;
   font-weight: 400;
   font-size: 16px;
   line-height: 100%;
   /* identical to box height, or 16px */
-
   letter-spacing: -0.05em;
 
   color: #000000;
@@ -130,18 +134,19 @@ export const TagsWrap = styled.div`
   padding-bottom: 32.49px;
   width: 820px;
   height: calc(31.51px + 32.49px + 14px);
-  border-bottom: 1px solid #99aecc;
+  border-bottom: 1px solid #99bbcc;
 `;
 export const ButtonWrap = styled.div`
   display: flex;
   padding-top: 36.01px;
   gap: 22px;
 `;
-export const PickBt = styled.button`
+export const PickBt = styled.button<IPicked>`
   border: 0;
   width: 152px;
   height: 100px;
-  background: #c9c9c9;
+  background: #99bbcc;
+  opacity: ${(props) => (props.picked ? 1 : 0.6)};
   font-weight: 700;
   font-size: 30px;
   line-height: 100%;
@@ -178,7 +183,8 @@ export const Pickcount = styled.span`
 export const PushMyBasket = styled.button`
   width: 312px;
   height: 100px;
-  background: #a0a0a0;
+  background: #66aacc;
+  opacity: 0.5;
   font-weight: 700;
   font-size: 30px;
   line-height: 100%;
@@ -194,7 +200,7 @@ export const PushMyBasket = styled.button`
 `;
 
 export const Buy = styled.button`
-  background-color: #000000;
+  background-color: #66aacc;
   font-weight: 700;
   font-size: 30px;
   line-height: 100%;
@@ -218,13 +224,13 @@ export const DetailWrap = styled.div`
   display: flex;
   flex-direction: column;
   padding-right: 37px;
-  height: 1170px;
-  border-right: 1px solid #acc4e5;
+  height: 1200x;
+  border-right: 1px solid #99bbcc;
 `;
 export const ProductDetailTitleWrap = styled.div`
   padding-bottom: 30px;
   width: 925px;
-  border-bottom: 3px solid #acc4e5;
+  border-bottom: 3px solid #99bbcc;
   > h1 {
     font-weight: 700;
     font-size: 32px;
@@ -237,7 +243,8 @@ export const ProductDetailTitleWrap = styled.div`
 `;
 
 export const ContentsWrap = styled.div`
-  height: calc(19px + 8px + 3px + 130px);
+  height: calc(19px + 8px + 3px + 200px);
+  overflow: auto;
   display: flex;
   width: 916px;
   padding: 27px 20px 3px 20px;
@@ -300,6 +307,12 @@ export const MarketPicture = styled.div`
 export const MarketProfile = styled.img`
   width: 100%;
   height: 100%;
+`;
+
+export const DefaultMarketProfile = styled.img`
+  width: 75px;
+  height: 75px;
+  border-radius: 50px;
 `;
 export const InFoUser = styled.span`
   font-weight: 400;

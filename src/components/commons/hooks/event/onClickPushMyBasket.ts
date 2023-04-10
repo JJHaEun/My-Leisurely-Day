@@ -2,7 +2,7 @@ import { Modal } from "antd";
 import { IUseditem } from "../../../../commons/types/generated/types";
 
 export const onClickPushMyBasket = () => {
-  const onClickBasket = (basket: IUseditem) => () => {
+  const onClickBasket = (basket?: IUseditem) => () => {
     const baskets: IUseditem[] = JSON.parse(
       localStorage.getItem("baskets") ?? "[]"
     );
@@ -11,10 +11,9 @@ export const onClickPushMyBasket = () => {
       Modal.info({ content: "이미 담겨있는 상품입니다" });
       return;
     }
-    baskets.push(basket);
+    if (basket !== undefined) baskets.push(basket);
 
     localStorage.setItem("baskets", JSON.stringify(baskets));
-    console.log(baskets.length);
     window.location.reload();
   };
   return {

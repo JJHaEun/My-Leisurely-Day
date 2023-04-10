@@ -4,6 +4,7 @@ import Question from "../../itemQuestion/questionWrite/questionWrite";
 import KakaoMapDetail from "../../kakao/kakaomapDetail/kakaoMapDetail";
 import { IItemDetailProps } from "../usedItemDetail.types";
 import * as S from "../usedItemDetail.styles";
+import { ShopFilled } from "@ant-design/icons";
 
 export default function DetailMarketMiddle(
   props: IItemDetailProps
@@ -53,7 +54,7 @@ export default function DetailMarketMiddle(
                 )}`}
               />
             ) : (
-              <div />
+              <S.DefaultMarketProfile src={`/default_shop.png`} />
               // 마켓 기본이미지
             )}
           </S.MarketPicture>

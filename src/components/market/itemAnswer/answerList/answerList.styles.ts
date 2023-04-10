@@ -1,17 +1,13 @@
 import styled from "@emotion/styled";
 
-export const CommentList = styled.div`
+export const AnswersList = styled.div`
   width: 340px;
-  height: calc((115px + 72px) * 4);
+  height: calc((115px) * 2);
+  overflow: auto;
   overflow: auto;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   ::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
   }
-`;
-
-export const AnswerWrap = styled.div`
-  display: flex;
-  justify-content: flex-end;
 `;

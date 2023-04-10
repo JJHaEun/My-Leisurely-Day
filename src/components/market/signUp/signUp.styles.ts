@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Inputs, SignInMain } from "../signIn/signIn.styles";
+import { SignInMain } from "../signIn/signIn.styles";
 
 export const SignUpMain = styled(SignInMain)``;
 

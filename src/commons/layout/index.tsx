@@ -11,7 +11,7 @@ interface ILayoutProps {
 
 export default function Layout(props: ILayoutProps): JSX.Element {
   const router = useRouter();
-  const SHOW_LOGIN_AND_SIGN_IN_HEADER = [`/login`, "/signUp"];
+  const SHOW_LOGIN_AND_SIGN_IN_HEADER = [`/signin`, "/signup", "/mypage"];
 
   const isShowLoginAndSignUp = SHOW_LOGIN_AND_SIGN_IN_HEADER.includes(
     router.asPath

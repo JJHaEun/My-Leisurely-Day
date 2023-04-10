@@ -5,6 +5,11 @@ const ReactQuill = dynamic(async () => await import("react-quill"), {
   ssr: false,
 });
 
+interface IError {
+  error?: string;
+  role?: string;
+}
+
 export const ImportGroup = styled.div`
   position: relative;
   display: flex;
@@ -15,46 +20,47 @@ export const ImportGroup = styled.div`
 
 export const ErrMessage = styled.p`
   position: absolute;
-  top: 30px;
+  top: 25px;
   font-size: small;
   color: red;
 `;
 export const NamePrice = styled.div`
   display: flex;
-  justify-content: space-between;
+  gap: 3em;
 `;
 
-export const InputNamePrice = styled.input`
+export const InputNamePrice = styled.input<IError>`
   width: 25em;
   height: 3em;
   padding-left: 10px;
+  display: flex;
   ::placeholder {
-    color: silver;
+    color: ${(props) => (props.error ? "red" : "#99bbcc")};
   }
   outline: none;
   border: none;
-  border-bottom: 1px solid #dc4b4e;
+  border-bottom: ${(props) =>
+    props.error ? "1.5px solid red" : "1px solid #99bbcc"};
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<IError>`
   width: 100%;
   height: 3em;
   padding: 10px;
   ::placeholder {
-    color: silver;
+    color: ${(props) => (props.error ? "red" : "#99bbcc")};
   }
   outline: none;
   border: none;
-  border-bottom: 1px solid #dc4b4e;
+  border-bottom: ${(props) =>
+    props.error ? "1.5px solid red" : "1px solid #99bbcc"};
 `;
 
-export const ContentsBox = styled(ReactQuill)`
-  ::placeholder {
-    color: silver;
-  }
+export const ContentsBox = styled(ReactQuill)<IError>`
   .ql-editor {
     height: 20rem;
-    border: 1px solid #dc4b4e;
+    border: ${(props) =>
+      props.error ? "1.5px solid red" : "1px solid #99bbcc"};
   }
   .ql-toolbar.ql-snow {
     border: none;
@@ -68,9 +74,7 @@ export const TagGroup = styled.div`
   gap: 1em;
 `;
 
-export const TagInput = styled(Input)`
-  border-bottom: 1px solid #3d6fd3;
-`;
+export const TagInput = styled(Input)``;
 
 export const Location = styled.div`
   display: flex;
@@ -93,10 +97,10 @@ export const AddressSearchGroup = styled.div`
     height: 3em;
     outline: none;
     border: none;
-    border-bottom: 1px solid #3d6fd3;
+    border-bottom: 1px solid #99bbcc;
     padding: 10px;
     ::placeholder {
-      color: silver;
+      color: #99bbcc;
     }
   }
   > button {
@@ -116,7 +120,7 @@ export const AddressInputGroup = styled.div`
     height: 2em;
     outline: none;
     border: none;
-    border-bottom: 1px solid #3d6fd3;
+    border-bottom: 1px solid #99bbcc;
     padding: 10px;
   }
 `;
@@ -130,4 +134,5 @@ export const MapWrap = styled.div`
 export const PhotoWrap = styled.div`
   display: flex;
   gap: 3em;
+  padding-bottom: 5em;
 `;

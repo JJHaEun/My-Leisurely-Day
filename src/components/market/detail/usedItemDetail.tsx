@@ -3,13 +3,13 @@ import { v4 as uuidv4 } from "uuid";
 import { insertCommas } from "../../../commons/libraries/price";
 import DetailMarketMiddle from "./detailMiddle.tsx/useItemDetailMiddle";
 import * as S from "./usedItemDetail.styles";
-import { Fragment } from "react";
 import { useMovePage } from "../../commons/hooks/useMovePage";
 import { useRouter } from "next/router";
 import { useDeleteUsedItem } from "../../commons/hooks/useOnclickDelete";
 import { onClickPushMyBasket } from "../../commons/hooks/event/onClickPushMyBasket";
-import { useOnClickBuy } from "../../commons/hooks/onClickBuy";
+import { useOnClickBuy } from "../../commons/hooks/event/onClickBuy";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useOnClickPick } from "../../commons/hooks/useOnlickPick";
 
 export default function DetailMarket(): JSX.Element {
   const router = useRouter();
@@ -18,6 +18,7 @@ export default function DetailMarket(): JSX.Element {
   const { onClickDelete } = useDeleteUsedItem();
   const { onClickBasket } = onClickPushMyBasket();
   const { onClickBuy } = useOnClickBuy();
+  const { onClickPick } = useOnClickPick();
 
   return (
     <S.TopMainWrap>
@@ -72,7 +73,8 @@ export default function DetailMarket(): JSX.Element {
               <S.Remarks>{data?.fetchUseditem.remarks}</S.Remarks>
             </S.RemarksWrap>
             <S.TagsWrap>
-              {data?.fetchUseditem.tags &&
+              {data?.fetchUseditem.tags !== null &&
+                data?.fetchUseditem.tags !== undefined &&
                 data?.fetchUseditem.tags?.map((el) => (
                   // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
                   <S.Tags key={uuidv4() + 1}>
@@ -81,12 +83,15 @@ export default function DetailMarket(): JSX.Element {
                 ))}
             </S.TagsWrap>
             <S.ButtonWrap>
-              <S.PickBt>
+              <S.PickBt
+                picked={Number(data?.fetchUseditem.pickedCount)}
+                onClick={onClickPick(String(data?.fetchUseditem._id))}
+              >
                 찜<S.Pickcount>{data?.fetchUseditem.pickedCount}</S.Pickcount>
               </S.PickBt>
               <S.PushMyBasket
                 onClick={() => {
-                  data?.fetchUseditem != null &&
+                  data?.fetchUseditem !== null &&
                     onClickBasket(data?.fetchUseditem)();
                 }}
               >

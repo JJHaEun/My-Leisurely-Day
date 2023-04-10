@@ -44,6 +44,14 @@ export const ThreeDays = styled.div`
   align-items: center;
   gap: 25px;
   width: auto;
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const WeatherImg = styled.img`

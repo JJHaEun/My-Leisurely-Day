@@ -1,8 +1,15 @@
 import { useForm } from "react-hook-form";
 import { useOnClickCreateUpdateQuestion } from "../../../commons/hooks/useonClickCreateUpdateQuestion";
 import { IPropsQuestion, IQuestionForm } from "./question.types";
-import * as S from "./question.styles";
-import * as ST from "../../../../commons/libraries/buttonCreate";
+import {
+  CommentBox,
+  CommentTitleWrap,
+  CommentWrap,
+  EditOrBackWrap,
+} from "../../../commons/commentsStyles/comments.styles";
+import { CommentButton } from "../../../../commons/libraries/buttonCreate";
+import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
+import { onClickCancel } from "../../../commons/hooks/event/onClickCancel";
 
 export default function Question(props: IPropsQuestion): JSX.Element {
   const { register, handleSubmit, reset } = useForm<IQuestionForm>({
@@ -10,12 +17,13 @@ export default function Question(props: IPropsQuestion): JSX.Element {
   });
   const { onClickEditFinish, onCreateQuestion } =
     useOnClickCreateUpdateQuestion();
+  const { Cancel } = onClickCancel(props.setIsEdit);
 
   return (
     <div>
-      <S.CommentTitleWrap>
+      <CommentTitleWrap>
         <h1>{props.isEdit ? "수정" : "질문"}</h1>
-      </S.CommentTitleWrap>
+      </CommentTitleWrap>
 
       <form
         onSubmit={handleSubmit(
@@ -24,12 +32,20 @@ export default function Question(props: IPropsQuestion): JSX.Element {
             : (data) => onCreateQuestion(data, reset)
         )}
       >
-        <S.CommentWrap>
-          <S.CommentBox {...register("contents")} />
-          <ST.CommentButton>
-            {props.isEdit ? "수정" : "등록"}하기
-          </ST.CommentButton>
-        </S.CommentWrap>
+        <CommentWrap>
+          <CommentBox
+            {...register("contents")}
+            defaultValue={props.el?.contents !== "" ? props.el?.contents : ""}
+          />
+          <EditOrBackWrap>
+            {props.isEdit && (
+              <div onClick={Cancel}>
+                <KeyboardReturnIcon />
+              </div>
+            )}
+            <CommentButton>{props.isEdit ? "수정" : "등록"}하기</CommentButton>
+          </EditOrBackWrap>
+        </CommentWrap>
       </form>
     </div>
   );

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { UseFormSetValue, UseFormTrigger } from "react-hook-form";
-import { useQueryFetchUsedItem } from "./commons/hooks/customs/quries/useQueryFetchUsedItem";
-import { IUseCreateForm } from "./market/write/createEditUsedItem.types";
+import { useQueryFetchUsedItem } from "../customs/quries/useQueryFetchUsedItem";
+import { IUseCreateForm } from "../../../market/write/createEditUsedItem.types";
 
 export const useReactQuill = () => {
   const [contents, setContents] = useState("");
