@@ -1,7 +1,9 @@
-export default function MyPage(): JSX.Element {
+import MyPage from "../../src/components/market/mypage/mypage";
+
+export default function MyPages(): JSX.Element {
   return (
     <>
-      <div></div>
+      <MyPage />
     </>
   );
 }

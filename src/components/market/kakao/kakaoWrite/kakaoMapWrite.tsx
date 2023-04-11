@@ -11,8 +11,7 @@ export default function KakaoMapWrite(props: IKakaoMapProps): JSX.Element {
 
   useEffect(() => {
     const script = document.createElement("script"); // <script></script>
-    script.src =
-      "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=5555df6741499bf0bc7e691c7767c85b&libraries=services";
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=${process.env.NEXT_PUBLIC_API_KEY}&libraries=services`;
     document.head.appendChild(script);
     script.onload = () => {
       // 스크립트가 로드가 다 되고

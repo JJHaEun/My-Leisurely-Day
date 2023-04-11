@@ -20,7 +20,7 @@ const FETCH_USED_ITEMS_I_BOUGHT = gql`
   }
 `;
 
-export const FetchIBought = () => {
+export const useQueryFetchUsedItemsIBought = () => {
   const { data: fetchIBought } = useQuery<
     Pick<IQuery, "fetchUseditemsIBought">,
     IQueryFetchUseditemsIBoughtArgs

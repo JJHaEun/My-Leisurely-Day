@@ -6,7 +6,6 @@ export const LoginAndSignUpHeaderWrap = styled.div`
   height: 100px;
   display: flex;
   align-items: center;
-  background: #000000;
 `;
 export const SiteTitle = styled.span`
   transform: rotate(-3deg) translate(114px, 0px);

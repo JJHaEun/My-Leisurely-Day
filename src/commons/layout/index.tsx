@@ -11,12 +11,14 @@ interface ILayoutProps {
 
 export default function Layout(props: ILayoutProps): JSX.Element {
   const router = useRouter();
-  const SHOW_LOGIN_AND_SIGN_IN_HEADER = [`/signin`, "/signup", "/mypage"];
+  const SHOW_LOGIN_AND_SIGN_IN_HEADER = [`/signin`, "/signup"];
+  const SHOW_LOGIN_AND_SIGN_IN_MYPAGE_SIDE = [`/signin`, "/signup", "/mypage"];
 
   const isShowLoginAndSignUp = SHOW_LOGIN_AND_SIGN_IN_HEADER.includes(
     router.asPath
   );
-
+  const isShowLoginAndSignUpAndMyPage =
+    SHOW_LOGIN_AND_SIGN_IN_MYPAGE_SIDE.includes(router.asPath);
   return (
     <S.Page>
       {isShowLoginAndSignUp && <SignInAndSignUpHeader />}
@@ -28,7 +30,7 @@ export default function Layout(props: ILayoutProps): JSX.Element {
       )}
       <S.MainPage>
         <S.Children>{props.children}</S.Children>
-        {!isShowLoginAndSignUp && <LayoutSideBar />}
+        {!isShowLoginAndSignUpAndMyPage && <LayoutSideBar />}
       </S.MainPage>
     </S.Page>
   );
