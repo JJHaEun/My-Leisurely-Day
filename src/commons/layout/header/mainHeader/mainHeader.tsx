@@ -30,9 +30,11 @@ export default function MainHeader(): JSX.Element {
         {accessToken !== "" && (
           <S.UserInFo>
             <S.UserMain>
-              <S.UserName>{user?.fetchUserLoggedIn.name} 님</S.UserName>
+              <S.UserName onClick={onClickMoveTo(`/mypage`)}>
+                {user?.fetchUserLoggedIn.name} 님
+              </S.UserName>
               <S.UserPointWrap>
-                <S.UserPointAmount>
+                <S.UserPointAmount onClick={onClickMoveTo(`/charge`)}>
                   {insertCommas(
                     Number(user?.fetchUserLoggedIn.userPoint?.amount)
                   )}
@@ -40,7 +42,6 @@ export default function MainHeader(): JSX.Element {
                 <S.Point_P>P</S.Point_P>
               </S.UserPointWrap>
               <S.UsersChoiceWrap>
-                <span>충전</span>
                 <S.Menus onClick={onClickLogout}>로그아웃</S.Menus>
               </S.UsersChoiceWrap>
             </S.UserMain>
@@ -59,8 +60,8 @@ export default function MainHeader(): JSX.Element {
         <S.UnUsersChoiceWrap>
           <></>
           <S.UsersChoiceWrap>
-            <span onClick={onClickMoveTo(`/market/signIn`)}>로그인</span>
-            <span onClick={onClickMoveTo(`/market/signUp`)}>회원가입</span>
+            <span onClick={onClickMoveTo(`/signIn`)}>로그인</span>
+            <span onClick={onClickMoveTo(`/signUp`)}>회원가입</span>
           </S.UsersChoiceWrap>
         </S.UnUsersChoiceWrap>
       )}

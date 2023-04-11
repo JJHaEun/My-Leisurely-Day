@@ -19,7 +19,7 @@ export default function LayoutSideBar(): JSX.Element {
       <h1>최근 본 목록</h1>
       <div>
         {todayList
-          ?.filter((_, i: number) => Number([i]) <= 2)
+          ?.filter((_, i: number) => Number(i) <= 2)
           .map((el: IUseditem) => (
             <S.Today key={el._id} onClick={onClickMoveTo(`/market/${el._id}`)}>
               <S.Name>{el.name}</S.Name>

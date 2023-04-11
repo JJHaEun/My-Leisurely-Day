@@ -119,7 +119,7 @@ export default function CreateEditMarket(): JSX.Element {
             type="text"
             placeholder="상품요약을 작성해주세요"
             {...register("remarks")}
-            error={formState.errors.name?.message}
+            error={formState.errors.remarks?.message}
           />
         </S.ImportGroup>
         <S.ImportGroup>

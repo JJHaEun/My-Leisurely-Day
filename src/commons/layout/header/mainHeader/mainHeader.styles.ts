@@ -39,6 +39,10 @@ export const UserName = styled.span`
 
   color: #000000;
   padding-right: 5px;
+  cursor: pointer;
+  :hover {
+    color: #66aacc;
+  }
 `;
 export const UserPointAmount = styled.span`
   font-weight: 500;
@@ -49,6 +53,10 @@ export const UserPointAmount = styled.span`
   align-items: center;
   color: #000000;
   border-bottom: 1px solid black;
+  cursor: pointer;
+  :hover {
+    color: #66aacc;
+  }
 `;
 export const UserPointWrap = styled.div`
   display: flex;

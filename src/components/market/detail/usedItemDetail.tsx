@@ -10,7 +10,6 @@ import { onClickPushMyBasket } from "../../commons/hooks/event/onClickPushMyBask
 import { useOnClickBuy } from "../../commons/hooks/event/onClickBuy";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useOnClickPick } from "../../commons/hooks/useOnlickPick";
-
 export default function DetailMarket(): JSX.Element {
   const router = useRouter();
   const { data } = useQueryFetchUsedItem();
@@ -44,13 +43,17 @@ export default function DetailMarket(): JSX.Element {
                 </div>
               ))
           ) : (
-            <S.ImgBox />
+            <S.DefaultImgBox>
+              <img src={`/default_product.png`} />
+            </S.DefaultImgBox>
           )}
         </S.ImgMainBoxWrap>
         <S.ItemWrap>
           <S.ItemTitleWrap>
             <S.INameWrap>
-              <S.ItemName>{data?.fetchUseditem.name}</S.ItemName>
+              <S.ItemName>
+                {data?.fetchUseditem ? data?.fetchUseditem.name : <>zhzh</>}
+              </S.ItemName>
               <S.EditDeletWrap>
                 <img
                   src={`/edit.png`}
@@ -83,11 +86,13 @@ export default function DetailMarket(): JSX.Element {
                 ))}
             </S.TagsWrap>
             <S.ButtonWrap>
+              <S.Back onClick={onClickMoveTo(`/market`)}>뒤로가기</S.Back>
               <S.PickBt
                 picked={Number(data?.fetchUseditem.pickedCount)}
                 onClick={onClickPick(String(data?.fetchUseditem._id))}
               >
-                찜<S.Pickcount>{data?.fetchUseditem.pickedCount}</S.Pickcount>
+                <S.IPickIcon />
+                <S.Pickcount>{data?.fetchUseditem.pickedCount}</S.Pickcount>
               </S.PickBt>
               <S.PushMyBasket
                 onClick={() => {

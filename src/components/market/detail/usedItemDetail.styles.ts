@@ -1,6 +1,7 @@
 import { ShopFilled } from "@ant-design/icons";
 import styled from "@emotion/styled";
 import { Carousel } from "antd";
+import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 
 interface IPicked {
   picked?: number;
@@ -17,7 +18,17 @@ export const Upmain = styled.div`
 export const ImgBox = styled.div`
   width: 480px;
   height: 480px;
-  border: 1px solid #0066cc;
+  border: 1px solid #99bbcc;
+`;
+
+export const DefaultImgBox = styled.div`
+  width: 480px;
+  height: 480px;
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 export const ImgMainBoxWrap = styled.div`
   width: 450px;
@@ -36,7 +47,7 @@ export const CarouselWrap = styled(Carousel)`
   & > .slick-dots li.slick-active button {
     width: 20px;
     height: 7px;
-    background-color: #0066cc;
+    background-color: #66aacc;
     border-radius: 50%;
     /* width: 7px;
   
@@ -143,7 +154,7 @@ export const ButtonWrap = styled.div`
 `;
 export const PickBt = styled.button<IPicked>`
   border: 0;
-  width: 152px;
+  width: 144px;
   height: 100px;
   background: #99bbcc;
   opacity: ${(props) => (props.picked ? 1 : 0.6)};
@@ -179,12 +190,28 @@ export const Pickcount = styled.span`
 
   color: #ffffff;
 `;
-
 export const PushMyBasket = styled.button`
-  width: 312px;
+  width: 150px;
   height: 100px;
   background: #66aacc;
   opacity: 0.5;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 100%;
+  border: none;
+  /* or 30px */
+
+  letter-spacing: -0.05em;
+
+  color: #ffffff;
+  :hover {
+    cursor: pointer;
+  }
+`;
+export const Back = styled.button`
+  width: 150px;
+  height: 100px;
+  background: #99bbcc;
   font-weight: 700;
   font-size: 30px;
   line-height: 100%;
@@ -334,4 +361,8 @@ export const CommentTitleWrap = styled.div`
     letter-spacing: -0.05em;
     color: #000000;
   }
+`;
+
+export const IPickIcon = styled(FavoriteRoundedIcon)`
+  color: red;
 `;

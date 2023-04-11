@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import MyPageSide from "../../components/market/mypage/mypageSide/mypageSide";
 import MainBanner from "./banner/banner";
 import MainHeader from "./header/mainHeader/mainHeader";
 import SignInAndSignUpHeader from "./header/singIninAndSignUpHeader/singIninAndSignUpHeader";
@@ -12,13 +13,23 @@ interface ILayoutProps {
 export default function Layout(props: ILayoutProps): JSX.Element {
   const router = useRouter();
   const SHOW_LOGIN_AND_SIGN_IN_HEADER = [`/signin`, "/signup"];
-  const SHOW_LOGIN_AND_SIGN_IN_MYPAGE_SIDE = [`/signin`, "/signup", "/mypage"];
+  const SHOW_LOGIN_AND_SIGN_IN_MYPAGE_SIDE = [
+    `/signin`,
+    "/signup",
+    "/mypage",
+    "/charge",
+    "/cart",
+    "/picked",
+  ];
+  const SHOW_MYPAGE_SIDE = ["/mypage", "/charge", "/cart", "/picked"];
 
   const isShowLoginAndSignUp = SHOW_LOGIN_AND_SIGN_IN_HEADER.includes(
     router.asPath
   );
   const isShowLoginAndSignUpAndMyPage =
     SHOW_LOGIN_AND_SIGN_IN_MYPAGE_SIDE.includes(router.asPath);
+
+  const isShowMine = SHOW_MYPAGE_SIDE.includes(router.asPath);
   return (
     <S.Page>
       {isShowLoginAndSignUp && <SignInAndSignUpHeader />}
@@ -29,6 +40,7 @@ export default function Layout(props: ILayoutProps): JSX.Element {
         </>
       )}
       <S.MainPage>
+        <section>{isShowMine && <MyPageSide />}</section>
         <S.Children>{props.children}</S.Children>
         {!isShowLoginAndSignUpAndMyPage && <LayoutSideBar />}
       </S.MainPage>

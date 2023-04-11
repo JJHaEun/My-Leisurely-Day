@@ -1,6 +1,7 @@
 import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useMutationCreatePointTransactionOfBuyingAndSelling } from "../customs/mutations/useMutationCreatePointTransactionBuyingSelling";
+import { FETCH_USER_LOGGED_IN } from "../customs/quries/useQueryFetchUserLoggedIn";
 
 export const useOnClickBuy = () => {
   const [createPointTransactionOfBuyingAndSelling] =
@@ -8,15 +9,16 @@ export const useOnClickBuy = () => {
   const router = useRouter();
 
   const onClickBuy = async (): Promise<void> => {
-    if (typeof router.query.usedItemId !== "string") {
-      Modal.info({ content: "다시시도해주세요" });
-      return;
-    }
     try {
       await createPointTransactionOfBuyingAndSelling({
         variables: {
-          useritemId: router.query.usedItemId,
+          useritemId: String(router.query.productId),
         },
+        refetchQueries: [
+          {
+            query: FETCH_USER_LOGGED_IN,
+          },
+        ],
       });
       Modal.success({ content: "구매완료!" });
     } catch (error) {
