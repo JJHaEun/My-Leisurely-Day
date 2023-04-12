@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
-import { useQueryFetchUsedItemsCountIPicked } from "../../../commons/hooks/customs/quries/useQueryFetchUsedItemsCountIPicked";
-import { useQueryFetchUserLoggedIn } from "../../../commons/hooks/customs/quries/useQueryFetchUserLoggedIn";
-import { useQueryFetchUsedItemsCountIBought } from "../../../commons/hooks/customs/quries/useQueryyFetchUsedItemsCountIBought";
-import { useOnClickLogout } from "../../../commons/hooks/useOnclickLogOut";
+import { useQueryFetchUsedItemsCountIPicked } from "../../commons/hooks/customs/quries/useQueryFetchUsedItemsCountIPicked";
+import { useQueryFetchUserLoggedIn } from "../../commons/hooks/customs/quries/useQueryFetchUserLoggedIn";
+import { useQueryFetchUsedItemsCountIBought } from "../../commons/hooks/customs/quries/useQueryyFetchUsedItemsCountIBought";
+import { useOnClickLogout } from "../../commons/hooks/useOnclickLogOut";
 import * as S from "./mypageMainTop.styles";
 import CopyrightIcon from "@mui/icons-material/Copyright";
 import { ShoppingTwoTone } from "@ant-design/icons";
 import SellOutlinedIcon from "@mui/icons-material/SellOutlined";
-import { useMovePage } from "../../../commons/hooks/useMovePage";
+import { useMovePage } from "../../commons/hooks/useMovePage";
 
 export default function MyPageMainTop(): JSX.Element {
   const { data } = useQueryFetchUserLoggedIn();
   const { fetchIBoughtCount } = useQueryFetchUsedItemsCountIBought();
   const { onClickLogout } = useOnClickLogout();
   const [IBought, setIBought] = useState(0);
-  const { IPicked } = useQueryFetchUsedItemsCountIPicked();
+  const { IPickedCount } = useQueryFetchUsedItemsCountIPicked();
   const { onClickMoveTo } = useMovePage();
   useEffect(() => {
     const basket = JSON.parse(String(localStorage.getItem("baskets")));
@@ -39,7 +39,7 @@ export default function MyPageMainTop(): JSX.Element {
             </S.IconMenu>
             <span>{data?.fetchUserLoggedIn.userPoint?.amount} 원</span>
           </S.MyMenuFlex3>
-          <S.MyMenuFlex3>
+          <S.MyMenuFlex3 onClick={onClickMoveTo(`/bought`)}>
             <S.IconMenu>
               <SellOutlinedIcon />
               <span>구매상품</span>
@@ -48,19 +48,19 @@ export default function MyPageMainTop(): JSX.Element {
           </S.MyMenuFlex3>
         </S.MyInFoMenu>
         <S.MyInFoMenu2>
-          <S.MyMenuFlex2>
+          <S.MyMenuFlex2 onClick={onClickMoveTo(`/cart`)}>
             <S.IconMenu>
               <ShoppingTwoTone />
               <span>장바구니</span>
             </S.IconMenu>
             <span>{IBought} 개</span>
           </S.MyMenuFlex2>
-          <S.MyMenuFlex2>
+          <S.MyMenuFlex2 onClick={onClickMoveTo(`/picked`)}>
             <S.IconMenu>
               <S.IPicked />
               <span>위시리스트</span>
             </S.IconMenu>
-            <span>{IPicked?.fetchUseditemsCountIPicked} 개</span>
+            <span>{IPickedCount?.fetchUseditemsCountIPicked} 개</span>
           </S.MyMenuFlex2>
         </S.MyInFoMenu2>
       </S.MyInFos>

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const MainBannerWrap = styled.div`
-  width: 1920px;
+  width: 100vw;
   height: 157px;
   display: flex;
   border-bottom: 1px solid #99bbcc;

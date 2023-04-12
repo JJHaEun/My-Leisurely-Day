@@ -8,7 +8,7 @@ export const CartMain = styled.div`
 export const MainSectionCart = styled.section`
   display: flex;
   gap: 25px;
-  padding: 10px 20px;
+  padding: 15px 20px;
   border-bottom: 1px solid #99bbcc;
 `;
 export const cartImgSection = styled.section`
@@ -47,4 +47,9 @@ export const InfoSection1 = styled.section`
 export const InfoSectionMain = styled.section`
   display: flex;
   gap: 200px;
+`;
+
+export const PriceWrap = styled.span`
+  display: flex;
+  gap: 3px;
 `;

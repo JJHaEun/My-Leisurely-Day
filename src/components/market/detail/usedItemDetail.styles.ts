@@ -35,6 +35,8 @@ export const ImgMainBoxWrap = styled.div`
   height: 450px;
 `;
 export const ImgMainImg = styled.img`
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 `;
 export const CarouselWrap = styled(Carousel)`

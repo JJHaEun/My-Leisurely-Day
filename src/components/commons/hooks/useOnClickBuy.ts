@@ -1,7 +1,8 @@
 import { Modal } from "antd";
 import { useRouter } from "next/router";
-import { useMutationCreatePointTransactionOfBuyingAndSelling } from "../customs/mutations/useMutationCreatePointTransactionBuyingSelling";
-import { FETCH_USER_LOGGED_IN } from "../customs/quries/useQueryFetchUserLoggedIn";
+import { useMutationCreatePointTransactionOfBuyingAndSelling } from "./customs/mutations/useMutationCreatePointTransactionBuyingSelling";
+import { FETCH_USED_ITEMS_I_BOUGHT } from "./customs/quries/useQueryFetchUsedItemsIBought";
+import { FETCH_USED_ITEMS_COUNT_I_BOUGHT } from "./customs/quries/useQueryyFetchUsedItemsCountIBought";
 
 export const useOnClickBuy = () => {
   const [createPointTransactionOfBuyingAndSelling] =
@@ -16,7 +17,10 @@ export const useOnClickBuy = () => {
         },
         refetchQueries: [
           {
-            query: FETCH_USER_LOGGED_IN,
+            query: FETCH_USED_ITEMS_I_BOUGHT,
+          },
+          {
+            query: FETCH_USED_ITEMS_COUNT_I_BOUGHT,
           },
         ],
       });

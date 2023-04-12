@@ -4,7 +4,7 @@ import { insertCommas } from "../../commons/libraries/price";
 import { IUseditem } from "../../commons/types/generated/types";
 import { useMovePage } from "../commons/hooks/useMovePage";
 import { useOnClickPick } from "../commons/hooks/useOnlickPick";
-import * as S from "./cart.styles";
+import * as S from "../commons/cart_pickStyles/cart.styles";
 
 export default function Cart(): JSX.Element {
   // 장바구니
@@ -23,7 +23,7 @@ export default function Cart(): JSX.Element {
   return (
     <div>
       {cart.map((el: IUseditem) => (
-        <S.MainSectionCart>
+        <S.MainSectionCart key={el._id}>
           <S.cartImgSection>
             {el.images?.[0] !== undefined && el.images?.[0] !== "" ? (
               <img

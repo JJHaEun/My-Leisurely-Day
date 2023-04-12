@@ -1,4 +1,4 @@
-import { useMovePage } from "../../../commons/hooks/useMovePage";
+import { useMovePage } from "../../commons/hooks/useMovePage";
 import * as S from "./mypageSide.styles";
 
 export default function MyPageSide(): JSX.Element {
@@ -18,7 +18,7 @@ export default function MyPageSide(): JSX.Element {
           <span>상품</span>
         </li>
         <ul>
-          <dl>위시리스트</dl>
+          <dl onClick={onClickMoveTo(`/picked`)}>위시리스트</dl>
           <dl onClick={onClickMoveTo(`/cart`)}>장바구니</dl>
         </ul>
       </ul>
@@ -28,7 +28,7 @@ export default function MyPageSide(): JSX.Element {
           <span>구매</span>
         </li>
         <ul>
-          <dl>결제 내역</dl>
+          <dl onClick={onClickMoveTo(`/bought`)}>구매 내역</dl>
           {/* 구매내역의미 fetchPointTransactionsOfBuying */}
           <dl onClick={onClickMoveTo(`/charge`)}>포인트</dl>
           {/* 포인트에서는 포인트 충전내역 fetchPointTransactionsOfLoading*/}

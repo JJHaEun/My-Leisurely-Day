@@ -4,7 +4,7 @@ import type {
   IQueryFetchUseditemsIBoughtArgs,
 } from "../../../../../commons/types/generated/types";
 
-const FETCH_USED_ITEMS_I_BOUGHT = gql`
+export const FETCH_USED_ITEMS_I_BOUGHT = gql`
   query fetchUseditemsIBought($search: String, $page: Int) {
     fetchUseditemsIBought(search: $search, page: $page) {
       _id
@@ -12,7 +12,7 @@ const FETCH_USED_ITEMS_I_BOUGHT = gql`
       name
       price
       images
-      buyer {
+      seller {
         _id
         name
       }
@@ -21,9 +21,17 @@ const FETCH_USED_ITEMS_I_BOUGHT = gql`
 `;
 
 export const useQueryFetchUsedItemsIBought = () => {
-  const { data: fetchIBought } = useQuery<
+  const { data: fetchIBought, refetch } = useQuery<
     Pick<IQuery, "fetchUseditemsIBought">,
     IQueryFetchUseditemsIBoughtArgs
-  >(FETCH_USED_ITEMS_I_BOUGHT);
-  return { fetchIBought };
+  >(FETCH_USED_ITEMS_I_BOUGHT, {
+    variables: {
+      page: 1,
+      search: "",
+    },
+  });
+  return {
+    fetchIBought,
+    refetch,
+  };
 };

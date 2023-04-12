@@ -12,7 +12,7 @@ export const MyMenuSide = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1em;
-    padding-left: 0.8em;
+    padding: 5px 0 5px 0.8em;
     /* padding-right: 3em; */
 
     > li {

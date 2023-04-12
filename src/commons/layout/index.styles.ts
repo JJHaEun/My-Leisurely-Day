@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Page = styled.div`
-  width: 1920px;
+  width: 100vw;
 `;
 export const MainPage = styled.div`
   width: 100vw;

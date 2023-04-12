@@ -29,6 +29,10 @@ export const UserInFo = styled.div`
   color: #000000;
 `;
 
+export const GoBasket = styled.span`
+  cursor: pointer;
+`;
+
 export const UserName = styled.span`
   font-style: normal;
   font-weight: 500;

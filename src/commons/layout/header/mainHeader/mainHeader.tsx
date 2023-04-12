@@ -46,12 +46,12 @@ export default function MainHeader(): JSX.Element {
               </S.UsersChoiceWrap>
             </S.UserMain>
             <div>
-              <span>
+              <S.GoBasket onClick={onClickMoveTo(`/cart`)}>
                 <Badge count={basket !== 0 ? basket : 0} overflowCount={10}>
                   <div> 장바구니</div>
                   {/* 장바구니를 클릭하면 장바구니로 이동해 로컬스토리지에서 꺼내 상품을 뿌리기. */}
                 </Badge>
-              </span>
+              </S.GoBasket>
             </div>
           </S.UserInFo>
         )}

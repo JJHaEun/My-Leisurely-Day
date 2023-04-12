@@ -22,6 +22,11 @@ export const MyMainSectionLeft = styled.section`
   padding-left: 1.5em;
   padding-right: 2em;
   > button {
+    width: 80px;
+    height: 30px;
+    outline: none;
+    border: none;
+    background: #99bbcc;
     cursor: pointer;
   }
 `;

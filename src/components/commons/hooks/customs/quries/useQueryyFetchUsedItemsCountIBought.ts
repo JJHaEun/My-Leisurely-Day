@@ -4,7 +4,7 @@ import {
   IQueryFetchUseditemsIBoughtArgs,
 } from "../../../../../commons/types/generated/types";
 
-const FETCH_USED_ITEMS_COUNT_I_BOUGHT = gql`
+export const FETCH_USED_ITEMS_COUNT_I_BOUGHT = gql`
   query {
     fetchUseditemsCountIBought
   }

@@ -7,7 +7,7 @@ import { useMovePage } from "../../commons/hooks/useMovePage";
 import { useRouter } from "next/router";
 import { useDeleteUsedItem } from "../../commons/hooks/useOnclickDelete";
 import { onClickPushMyBasket } from "../../commons/hooks/event/onClickPushMyBasket";
-import { useOnClickBuy } from "../../commons/hooks/event/onClickBuy";
+import { useOnClickBuy } from "../../commons/hooks/useOnClickBuy";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useOnClickPick } from "../../commons/hooks/useOnlickPick";
 export default function DetailMarket(): JSX.Element {
@@ -23,14 +23,15 @@ export default function DetailMarket(): JSX.Element {
     <S.TopMainWrap>
       <S.Upmain>
         <S.ImgMainBoxWrap>
-          {data?.fetchUseditem.images?.filter((el) => el).length !==
-            undefined &&
-          data?.fetchUseditem.images?.filter((el) => el).length > 0 ? (
-            data?.fetchUseditem.images
-              ?.filter((el) => el)
-              .map((el) => (
-                <div key={uuidv4()}>
-                  <S.CarouselWrap autoplay dots={true}>
+          {" "}
+          <S.CarouselWrap autoplay dots={true}>
+            {data?.fetchUseditem.images?.filter((el) => el).length !==
+              undefined &&
+            data?.fetchUseditem.images?.filter((el) => el).length > 0 ? (
+              data?.fetchUseditem.images
+                ?.filter((el) => el)
+                .map((el) => (
+                  <S.ImgMainBoxWrap key={uuidv4()}>
                     {el !== "" ? (
                       <S.ImgMainImg
                         src={`https://storage.googleapis.com/${el}`}
@@ -39,14 +40,14 @@ export default function DetailMarket(): JSX.Element {
                     ) : (
                       <S.ImgBox />
                     )}
-                  </S.CarouselWrap>
-                </div>
-              ))
-          ) : (
-            <S.DefaultImgBox>
-              <img src={`/default_product.png`} />
-            </S.DefaultImgBox>
-          )}
+                  </S.ImgMainBoxWrap>
+                ))
+            ) : (
+              <S.DefaultImgBox>
+                <img src={`/default_product.png`} />
+              </S.DefaultImgBox>
+            )}{" "}
+          </S.CarouselWrap>
         </S.ImgMainBoxWrap>
         <S.ItemWrap>
           <S.ItemTitleWrap>
@@ -86,7 +87,7 @@ export default function DetailMarket(): JSX.Element {
                 ))}
             </S.TagsWrap>
             <S.ButtonWrap>
-              <S.Back onClick={onClickMoveTo(`/market`)}>뒤로가기</S.Back>
+              <S.Back onClick={onClickMoveTo(`/market`)}>목록으로</S.Back>
               <S.PickBt
                 picked={Number(data?.fetchUseditem.pickedCount)}
                 onClick={onClickPick(String(data?.fetchUseditem._id))}

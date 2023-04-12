@@ -8,7 +8,6 @@ export default function MainBanner(): JSX.Element {
     <S.MainBannerWrap>
       <ST.SiteTitle onClick={onClickMoveTo(`/`)}>느린하루</ST.SiteTitle>
       <S.Sell>
-        <img src={`/sell.png`} alt="" />
         <S.Selling onClick={onClickMoveTo(`/market/new`)}>판매하기</S.Selling>
       </S.Sell>
     </S.MainBannerWrap>
