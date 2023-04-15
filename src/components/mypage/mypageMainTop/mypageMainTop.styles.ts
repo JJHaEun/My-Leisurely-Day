@@ -19,8 +19,8 @@ export const MyMainSectionLeft = styled.section`
   align-items: flex-start;
   gap: 2em;
   border-right: 1px solid #99bbcc;
-  padding-left: 1.5em;
-  padding-right: 2em;
+
+  padding: 1em 2em 1em 1.5em;
   > button {
     width: 80px;
     height: 30px;

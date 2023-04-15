@@ -17,10 +17,11 @@ export default function Layout(props: ILayoutProps): JSX.Element {
     `/signIn`,
     "/signUp",
     "/mypage",
-    "/charge",
-    "/cart",
-    "/picked",
-    "/bought",
+    "/mypage/charge",
+    "/mypage/cart",
+    "/mypage/picked",
+    "/mypage/bought",
+    `/mypage/editProfile`,
   ];
   const SHOW_MYPAGE_SIDE = [
     "/mypage",

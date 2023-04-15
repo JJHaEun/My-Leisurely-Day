@@ -1,10 +1,5 @@
 import styled from "@emotion/styled";
 
-export const CartMain = styled.div`
-  height: 500px;
-  overflow: auto;
-`;
-
 export const MainSectionCart = styled.section`
   display: flex;
   gap: 25px;

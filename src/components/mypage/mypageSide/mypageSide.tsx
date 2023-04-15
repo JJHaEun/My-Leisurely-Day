@@ -18,8 +18,8 @@ export default function MyPageSide(): JSX.Element {
           <span>상품</span>
         </li>
         <ul>
-          <dl onClick={onClickMoveTo(`/picked`)}>위시리스트</dl>
-          <dl onClick={onClickMoveTo(`/cart`)}>장바구니</dl>
+          <dl onClick={onClickMoveTo(`/mypage/picked`)}>위시리스트</dl>
+          <dl onClick={onClickMoveTo(`/mypage/cart`)}>장바구니</dl>
         </ul>
       </ul>
       <ul>
@@ -28,9 +28,9 @@ export default function MyPageSide(): JSX.Element {
           <span>구매</span>
         </li>
         <ul>
-          <dl onClick={onClickMoveTo(`/bought`)}>구매 내역</dl>
+          <dl onClick={onClickMoveTo(`/mypage/bought`)}>구매 내역</dl>
           {/* 구매내역의미 fetchPointTransactionsOfBuying */}
-          <dl onClick={onClickMoveTo(`/charge`)}>포인트</dl>
+          <dl onClick={onClickMoveTo(`/mypage/charge`)}>포인트</dl>
           {/* 포인트에서는 포인트 충전내역 fetchPointTransactionsOfLoading*/}
         </ul>
       </ul>
@@ -40,7 +40,7 @@ export default function MyPageSide(): JSX.Element {
           <span>개인</span>
         </li>
         <ul>
-          <dl>정보 변경</dl>
+          <dl onClick={onClickMoveTo(`/mypage/editProfile`)}>정보 변경</dl>
         </ul>
       </ul>
     </S.MyMenuSide>

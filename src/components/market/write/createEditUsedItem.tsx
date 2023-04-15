@@ -131,7 +131,6 @@ export default function CreateEditMarket(): JSX.Element {
             <S.ContentsBox
               onChange={onChangeContents(setValue, trigger)}
               placeholder="상품을 설명해주세요"
-              role="contents-input"
               //   {...register("contents")}
               value={contents ? contents : data?.fetchUseditem.contents}
               error={formState.errors.contents?.message}

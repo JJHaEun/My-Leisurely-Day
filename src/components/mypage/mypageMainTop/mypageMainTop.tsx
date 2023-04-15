@@ -8,6 +8,7 @@ import CopyrightIcon from "@mui/icons-material/Copyright";
 import { ShoppingTwoTone } from "@ant-design/icons";
 import SellOutlinedIcon from "@mui/icons-material/SellOutlined";
 import { useMovePage } from "../../commons/hooks/useMovePage";
+import Face6RoundedIcon from "@mui/icons-material/Face6Rounded";
 
 export default function MyPageMainTop(): JSX.Element {
   const { data } = useQueryFetchUserLoggedIn();
@@ -25,7 +26,24 @@ export default function MyPageMainTop(): JSX.Element {
       {/* 메뉴를 선택하면 옆에 사이드바에서도 같은것 색나옴. id를 주고, 클릭한 id가 같으면 색을 칠하기. */}
       <S.MyMainSectionLeft>
         <S.MyMenuFlex>
-          <S.Name>{data?.fetchUserLoggedIn.name}</S.Name>
+          <div>
+            <span style={{ width: "20px", height: "20px" }}>
+              {data?.fetchUserLoggedIn.picture ? (
+                <img
+                  src={`https://storage.googleapis.com/${data.fetchUserLoggedIn.picture}`}
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    objectFit: "contain",
+                  }}
+                />
+              ) : (
+                <Face6RoundedIcon style={{ fontSize: "35px" }} />
+              )}
+            </span>
+            <S.Name>{data?.fetchUserLoggedIn?.name}</S.Name>
+            {console.log(data?.fetchUserLoggedIn?.name)}
+          </div>
           <S.Email>{data?.fetchUserLoggedIn.email}</S.Email>
         </S.MyMenuFlex>
         <button onClick={onClickLogout}>로그아웃</button>

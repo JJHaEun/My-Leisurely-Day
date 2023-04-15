@@ -44,7 +44,6 @@ export const useOnclickCreateUpdateUsedItem = () => {
           });
         },
       });
-      console.log(result.data?.createUseditem.useditemAddress?.address);
       if (result.data?.createUseditem._id === undefined) {
         Modal.info({ content: "다시시도해주세요" });
         return;
@@ -76,18 +75,6 @@ export const useOnclickCreateUpdateUsedItem = () => {
   }, [data]);
 
   const onClickUpdateUsedItem = async (data: IUseCreateForm): Promise<void> => {
-    // if (
-    //   data.contents === "" &&
-    //   data.name === "" &&
-    //   data.remarks === "" &&
-    //   !isChangeImages &&
-    //   data.useditemAddress?.address === "" &&
-    //   data.useditemAddress?.zipcode === "" &&
-    //   data.useditemAddress?.addressDetail === ""
-    // ) {
-    //   Modal.info({ content: "수정사항이 없습니다" });
-    //   return;
-    // }
     if (typeof router.query.productId !== "string") return;
     try {
       const result = await updateUseditem({
@@ -118,7 +105,6 @@ export const useOnclickCreateUpdateUsedItem = () => {
         Modal.info({ content: "다시시도해주세요" });
         return;
       }
-      console.log(result.data.updateUseditem._id);
       void router.push(`/market/${result.data.updateUseditem._id}`);
       Modal.success({ content: "성공적으로 수정되었습니다" });
     } catch (error) {
