@@ -8,7 +8,17 @@ import CopyrightIcon from "@mui/icons-material/Copyright";
 import { ShoppingTwoTone } from "@ant-design/icons";
 import SellOutlinedIcon from "@mui/icons-material/SellOutlined";
 import { useMovePage } from "../../commons/hooks/useMovePage";
-import Face6RoundedIcon from "@mui/icons-material/Face6Rounded";
+import { useToggleModal } from "../../commons/hooks/useToggle";
+import { useRecoilState } from "recoil";
+import { isOpenState } from "../../../commons/stores";
+import {
+  PasswordForm,
+  useOnClickResetPW,
+} from "../../commons/hooks/useOnClickResetPassword";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schema } from "../../../commons/libraries/validations/passwordValidation";
+import { Modal } from "antd";
 
 export default function MyPageMainTop(): JSX.Element {
   const { data } = useQueryFetchUserLoggedIn();
@@ -17,47 +27,68 @@ export default function MyPageMainTop(): JSX.Element {
   const [IBought, setIBought] = useState(0);
   const { IPickedCount } = useQueryFetchUsedItemsCountIPicked();
   const { onClickMoveTo } = useMovePage();
+  const { ToggleModal } = useToggleModal();
+  const [isOpen] = useRecoilState(isOpenState);
+  const { onClickResetPassword } = useOnClickResetPW();
+
+  const { register, handleSubmit, formState } = useForm<PasswordForm>({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+  });
   useEffect(() => {
     const basket = JSON.parse(String(localStorage.getItem("baskets")));
     setIBought(basket?.length);
   }, []);
   return (
     <S.MyPageMainWrap>
-      {/* 메뉴를 선택하면 옆에 사이드바에서도 같은것 색나옴. id를 주고, 클릭한 id가 같으면 색을 칠하기. */}
+      {isOpen && (
+        <Modal
+          open={isOpen}
+          onOk={handleSubmit(onClickResetPassword)}
+          onCancel={ToggleModal}
+        >
+          <input type="password" {...register("password")} />
+          <div>{formState.errors.password?.message}</div>
+          <input type="password" {...register("passwordCheck")} />
+          <div>{formState.errors.passwordCheck?.message}</div>
+        </Modal>
+      )}
       <S.MyMainSectionLeft>
         <S.MyMenuFlex>
           <div>
-            <span style={{ width: "20px", height: "20px" }}>
+            <span>
               {data?.fetchUserLoggedIn.picture ? (
-                <img
-                  src={`https://storage.googleapis.com/${data.fetchUserLoggedIn.picture}`}
-                  style={{
-                    width: "20px",
-                    height: "20px",
-                    objectFit: "contain",
-                  }}
+                <S.Avatar
+                  image={`https://storage.googleapis.com/${data.fetchUserLoggedIn.picture}`}
+                  width={30}
+                  height={30}
+                  border={0}
+                  borderRadius={50}
+                  scale={1.2}
                 />
               ) : (
-                <Face6RoundedIcon style={{ fontSize: "35px" }} />
+                <S.DefaultProfile />
               )}
             </span>
             <S.Name>{data?.fetchUserLoggedIn?.name}</S.Name>
-            {console.log(data?.fetchUserLoggedIn?.name)}
           </div>
           <S.Email>{data?.fetchUserLoggedIn.email}</S.Email>
         </S.MyMenuFlex>
-        <button onClick={onClickLogout}>로그아웃</button>
+        <div>
+          <button onClick={ToggleModal}>비밀번호 변경</button>
+          <button onClick={onClickLogout}>로그아웃</button>
+        </div>
       </S.MyMainSectionLeft>
       <S.MyInFos>
         <S.MyInFoMenu>
-          <S.MyMenuFlex3 onClick={onClickMoveTo(`/charge`)}>
+          <S.MyMenuFlex3 onClick={onClickMoveTo(`/mypage/charge`)}>
             <S.IconMenu>
               <CopyrightIcon />
               <span>포인트</span>
             </S.IconMenu>
             <span>{data?.fetchUserLoggedIn.userPoint?.amount} 원</span>
           </S.MyMenuFlex3>
-          <S.MyMenuFlex3 onClick={onClickMoveTo(`/bought`)}>
+          <S.MyMenuFlex3 onClick={onClickMoveTo(`/mypage/bought`)}>
             <S.IconMenu>
               <SellOutlinedIcon />
               <span>구매상품</span>
@@ -66,14 +97,14 @@ export default function MyPageMainTop(): JSX.Element {
           </S.MyMenuFlex3>
         </S.MyInFoMenu>
         <S.MyInFoMenu2>
-          <S.MyMenuFlex2 onClick={onClickMoveTo(`/cart`)}>
+          <S.MyMenuFlex2 onClick={onClickMoveTo(`/mypage/cart`)}>
             <S.IconMenu>
               <ShoppingTwoTone />
               <span>장바구니</span>
             </S.IconMenu>
             <span>{IBought} 개</span>
           </S.MyMenuFlex2>
-          <S.MyMenuFlex2 onClick={onClickMoveTo(`/picked`)}>
+          <S.MyMenuFlex2 onClick={onClickMoveTo(`/mypage/picked`)}>
             <S.IconMenu>
               <S.IPicked />
               <span>위시리스트</span>

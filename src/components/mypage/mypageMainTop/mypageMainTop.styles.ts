@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
+import AvatarEditor from "react-avatar-editor";
+import Face6RoundedIcon from "@mui/icons-material/Face6Rounded";
 
 export const MyPageMainWrap = styled.div`
   border: 2px solid #99bbcc;
@@ -21,13 +23,19 @@ export const MyMainSectionLeft = styled.section`
   border-right: 1px solid #99bbcc;
 
   padding: 1em 2em 1em 1.5em;
-  > button {
-    width: 80px;
-    height: 30px;
-    outline: none;
-    border: none;
-    background: #99bbcc;
-    cursor: pointer;
+  > div {
+    display: flex;
+    gap: 3px;
+    > button {
+      font-size: 12px;
+      padding: 3px 3px;
+      width: 80px;
+      height: 30px;
+      outline: none;
+      border: none;
+      background: #99bbcc;
+      cursor: pointer;
+    }
   }
 `;
 
@@ -35,10 +43,18 @@ export const MyMenuFlex = styled.div`
   display: flex;
   flex-direction: column;
 `;
+export const Avatar = styled(AvatarEditor)`
+  border-radius: 50px;
+`;
+
+export const DefaultProfile = styled(Face6RoundedIcon)`
+  font-size: 35px;
+`;
 
 export const Name = styled.span`
   font-size: 1.8em;
-  padding-bottom: 0.2em;
+
+  padding-left: 0.2em;
 `;
 
 export const Email = styled.span`
