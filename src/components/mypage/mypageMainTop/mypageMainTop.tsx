@@ -18,7 +18,6 @@ import {
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "../../../commons/libraries/validations/passwordValidation";
-import { Modal } from "antd";
 
 export default function MyPageMainTop(): JSX.Element {
   const { data } = useQueryFetchUserLoggedIn();
@@ -42,16 +41,26 @@ export default function MyPageMainTop(): JSX.Element {
   return (
     <S.MyPageMainWrap>
       {isOpen && (
-        <Modal
+        <S.StyledModal
           open={isOpen}
           onOk={handleSubmit(onClickResetPassword)}
           onCancel={ToggleModal}
         >
-          <input type="password" {...register("password")} />
-          <div>{formState.errors.password?.message}</div>
-          <input type="password" {...register("passwordCheck")} />
-          <div>{formState.errors.passwordCheck?.message}</div>
-        </Modal>
+          <section>
+            <input
+              type="password"
+              {...register("password")}
+              placeholder="Password"
+            />
+            <div>{formState.errors.password?.message}</div>
+            <input
+              type="password"
+              {...register("passwordCheck")}
+              placeholder="PasswordCheck"
+            />
+            <div>{formState.errors.passwordCheck?.message}</div>
+          </section>
+        </S.StyledModal>
       )}
       <S.MyMainSectionLeft>
         <S.MyMenuFlex>

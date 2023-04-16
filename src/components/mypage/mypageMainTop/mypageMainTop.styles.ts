@@ -2,6 +2,73 @@ import styled from "@emotion/styled";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import AvatarEditor from "react-avatar-editor";
 import Face6RoundedIcon from "@mui/icons-material/Face6Rounded";
+import { Modal } from "antd";
+
+export const StyledModal = styled(Modal)`
+  .ant-modal-content {
+    width: 400px;
+  }
+  .ant-modal-close-x {
+    display: none;
+  }
+  .ant-btn-primary {
+    display: flex;
+    align-items: center;
+    :hover {
+      background-color: #ffffff;
+      color: #66aacc;
+    }
+  }
+  .ant-btn-default {
+    border-color: none;
+    display: flex;
+    align-items: center;
+  }
+  .ant-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .ant-btn {
+    border: 2px solid #99bbcc;
+    color: #66aacc;
+    background: #ffffff;
+    :hover {
+      background-color: #ffffff;
+      color: #66aacc;
+    }
+  }
+
+  section:nth-of-type(1) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    input:nth-of-type(1) {
+      border: none;
+      height: 40px;
+      width: 70%;
+      outline: none;
+      padding: 8px 10px;
+      border-bottom: 1px solid #99bbcc;
+      ::placeholder {
+        font-style: italic;
+        color: #99bbcc;
+      }
+    }
+    input:nth-of-type(2) {
+      border: none;
+      height: 40px;
+      width: 70%;
+      outline: none;
+      border-bottom: 1px solid #99bbcc;
+      padding: 8px 10px;
+      ::placeholder {
+        font-style: italic;
+        color: #99bbcc;
+      }
+    }
+  }
+`;
 
 export const MyPageMainWrap = styled.div`
   border: 2px solid #99bbcc;
