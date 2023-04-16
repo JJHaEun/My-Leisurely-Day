@@ -38,6 +38,7 @@ export default function MyPageMainTop(): JSX.Element {
     const basket = JSON.parse(String(localStorage.getItem("baskets")));
     setIBought(basket?.length);
   }, []);
+
   return (
     <S.MyPageMainWrap>
       {isOpen && (
@@ -47,18 +48,22 @@ export default function MyPageMainTop(): JSX.Element {
           onCancel={ToggleModal}
         >
           <section>
-            <input
-              type="password"
-              {...register("password")}
-              placeholder="Password"
-            />
-            <div>{formState.errors.password?.message}</div>
-            <input
-              type="password"
-              {...register("passwordCheck")}
-              placeholder="PasswordCheck"
-            />
-            <div>{formState.errors.passwordCheck?.message}</div>
+            <span>
+              <input
+                type="password"
+                {...register("password")}
+                placeholder="Password"
+              />
+              <div>{formState.errors.password?.message}</div>
+            </span>
+            <span>
+              <input
+                type="password"
+                {...register("passwordCheck")}
+                placeholder="PasswordCheck"
+              />
+              <div>{formState.errors.passwordCheck?.message}</div>
+            </span>
           </section>
         </S.StyledModal>
       )}

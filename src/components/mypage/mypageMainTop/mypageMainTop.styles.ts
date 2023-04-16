@@ -39,32 +39,32 @@ export const StyledModal = styled(Modal)`
   }
 
   section:nth-of-type(1) {
+    padding-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    input:nth-of-type(1) {
-      border: none;
-      height: 40px;
-      width: 70%;
-      outline: none;
-      padding: 8px 10px;
-      border-bottom: 1px solid #99bbcc;
-      ::placeholder {
-        font-style: italic;
-        color: #99bbcc;
+    gap: 20px;
+    span {
+      position: relative;
+      input {
+        background: none;
+        border: none;
+        height: 40px;
+        width: 200px;
+        outline: none;
+        padding: 8px 10px;
+        border-bottom: 1px solid #99bbcc;
+        ::placeholder {
+          font-style: italic;
+          color: #99bbcc;
+        }
       }
-    }
-    input:nth-of-type(2) {
-      border: none;
-      height: 40px;
-      width: 70%;
-      outline: none;
-      border-bottom: 1px solid #99bbcc;
-      padding: 8px 10px;
-      ::placeholder {
-        font-style: italic;
-        color: #99bbcc;
+      div {
+        position: absolute;
+        top: 40px;
+        font-size: 10px;
+        color: red;
+        width: 170px;
       }
     }
   }

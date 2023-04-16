@@ -25,6 +25,7 @@ export const useOnClickResetPW = () => {
         ],
       });
       setIsOpen(false);
+      Modal.success({ content: "비밃번호 변경이 완료되었습니다." });
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });
     }
