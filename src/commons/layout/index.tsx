@@ -21,15 +21,17 @@ export default function Layout(props: ILayoutProps): JSX.Element {
     "/mypage/cart",
     "/mypage/picked",
     "/mypage/bought",
-    `/mypage/editProfile`,
+    "/mypage/editProfile",
+    "/mypage/current",
   ];
   const SHOW_MYPAGE_SIDE = [
     "/mypage",
     "/mypage/charge",
     "/mypage/cart",
     "/mypage/picked",
-    `/mypage/editProfile`,
+    "/mypage/editProfile",
     "/mypage/bought",
+    "/mypage/current",
   ];
 
   const isShowLoginAndSignUp = SHOW_LOGIN_AND_SIGN_IN_HEADER.includes(
