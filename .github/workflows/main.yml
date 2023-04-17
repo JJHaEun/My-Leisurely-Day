@@ -5,7 +5,7 @@ on:
     branches: [ master ]
 
 env:
-  DOCKER_IMAGE: ghcr.io/${{ github.actor }}/trading
+  DOCKER_IMAGE: ghcr.io/${{JJHaEun}}/trading
   VERSION: ${{ github.sha }}
   NAME: go_cicd
 
@@ -31,8 +31,8 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_TOKEN }}
+          username: ${{ JJHaEun}}
+          password: ${{ secrets.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}}
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
@@ -50,8 +50,8 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_TOKEN }}
+          username: ${{ JJHaEun}}
+          password: ${{ secrets.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 }}
       - name: Docker run
         run: |
           docker stop ${{ env.NAME }} && docker rm ${{ env.NAME }} && docker rmi ${{ env.DOCKER_IMAGE }}:latest
