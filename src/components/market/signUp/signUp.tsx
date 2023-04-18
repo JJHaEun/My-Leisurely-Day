@@ -65,7 +65,7 @@ export default function SignUp(): JSX.Element {
           </S.SignUpInputWrap>
           <ST.ButtonWrap>
             <button>회원가입</button>
-            <button type="button" onClick={onClickMoveTo(`/market/signIn`)}>
+            <button type="button" onClick={onClickMoveTo(`/signIn`)}>
               로그인
             </button>
           </ST.ButtonWrap>

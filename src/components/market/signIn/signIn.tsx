@@ -45,7 +45,7 @@ export default function SignIn(): JSX.Element {
             <button type="submit">
               <span>로그인</span>
             </button>
-            <button type="button" onClick={onClickMoveTo(`/market/signUp`)}>
+            <button type="button" onClick={onClickMoveTo(`/signUp`)}>
               <span>회원가입</span>
             </button>
           </S.ButtonWrap>
