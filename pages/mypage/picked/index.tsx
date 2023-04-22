@@ -1,9 +1,9 @@
-import Picked from "../../../src/components/myPagePicked/picked";
+import IPick from "../../../src/components/myPagePick/Ipick";
 
 export default function PickedPage(): JSX.Element {
   return (
     <>
-      <Picked />
+      <IPick />
     </>
   );
 }

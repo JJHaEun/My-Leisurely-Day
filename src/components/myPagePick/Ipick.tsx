@@ -4,7 +4,7 @@ import { useQueryFetchUsedItemsIPicked } from "../commons/hooks/customs/quries/u
 import * as S from "../commons/cart_pickStyles/cart.styles";
 import { onClickPushMyBasket } from "../commons/hooks/event/onClickPushMyBasket";
 
-export default function Picked(): JSX.Element {
+export default function IPick(): JSX.Element {
   const { IPicked } = useQueryFetchUsedItemsIPicked();
   const { onClickBasket } = onClickPushMyBasket();
   return (
