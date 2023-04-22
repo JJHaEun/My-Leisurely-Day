@@ -25,7 +25,7 @@ export default function MyPageMainBottom(): JSX.Element {
         </span>
       </S.TodayMore>
       <S.MainWrap>
-        {todayList.slice(0, 5).map((el: IUseditem) => (
+        {todayList?.slice(0, 5).map((el: IUseditem) => (
           <S.MainSection onClick={onClickMoveTo(`/market/${el._id}`)}>
             <section>
               <S.ProductName>{el.name}</S.ProductName>

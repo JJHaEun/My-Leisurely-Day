@@ -10,7 +10,7 @@ export default function KakaoMapDetail(): JSX.Element {
 
   useEffect(() => {
     const script = document.createElement("script"); // <script></script>
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=${process.env.NEXT_PUBLIC_API_KEY}&libraries=services`;
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=16d6c09cf1ba075a98f88e540e8229e2&libraries=services`;
     document.head.appendChild(script);
     script.onload = () => {
       // 스크립트가 로드가 다 되고
