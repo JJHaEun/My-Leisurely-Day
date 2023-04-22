@@ -24,7 +24,7 @@ export const useOnclickSignUp = (): IUseOnclickSignUp => {
       });
       console.log(result.data?.createUser._id);
       Modal.success({ content: "회원가입을 축하합니다!!" });
-      void router.push(`/market/signIn`);
+      void router.push(`/signIn`);
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });
     }
