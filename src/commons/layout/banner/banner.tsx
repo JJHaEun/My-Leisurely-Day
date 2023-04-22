@@ -9,6 +9,7 @@ export default function MainBanner(): JSX.Element {
       <ST.SiteTitle onClick={onClickMoveTo(`/`)}>느린하루</ST.SiteTitle>
       <S.Sell>
         <S.Selling onClick={onClickMoveTo(`/market/new`)}>판매하기</S.Selling>
+        <S.Selling onClick={onClickMoveTo(`/market/`)}>마켓가기</S.Selling>
       </S.Sell>
     </S.MainBannerWrap>
   );

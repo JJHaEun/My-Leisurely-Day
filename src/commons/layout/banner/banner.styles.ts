@@ -10,11 +10,11 @@ export const MainBannerWrap = styled.div`
 `;
 
 export const Sell = styled.div`
-  width: 121px;
+  width: auto;
   height: 34.53px;
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: 30px;
 `;
 export const Selling = styled.div`
   font-weight: 500;
