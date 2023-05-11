@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../commons/stores";
 import { ISignForm } from "../../market/signIn/signIn.types";
 import { useMutationLoginUser } from "./customs/mutations/useMutationLoginUser";
+import { FETCH_USER_LOGGED_IN } from "./customs/quries/useQueryFetchUserLoggedIn";
 
 export const useOnClickSignIn = () => {
   const [, setAccessToken] = useRecoilState(accessTokenState);
@@ -15,6 +16,7 @@ export const useOnClickSignIn = () => {
         variables: {
           ...data,
         },
+        refetchQueries: [{ query: FETCH_USER_LOGGED_IN }],
       });
       console.log(result);
       const accessToken = result.data?.loginUser.accessToken;
@@ -24,7 +26,7 @@ export const useOnClickSignIn = () => {
       }
       setAccessToken(accessToken);
       void router.push(`/market`);
-      // const newPageUrl = "/mypage";
+      // const newPageUrl = "/market";
       // window.location.href = newPageUrl;
     } catch (error) {
       if (error instanceof Error) Modal.error({ content: error.message });

@@ -34,7 +34,7 @@ export default function MainHeader(): JSX.Element {
                 {user?.fetchUserLoggedIn.name} 님
               </S.UserName>
               <S.UserPointWrap>
-                <S.UserPointAmount onClick={onClickMoveTo(`/charge`)}>
+                <S.UserPointAmount onClick={onClickMoveTo(`/mypage/charge`)}>
                   {insertCommas(
                     Number(user?.fetchUserLoggedIn.userPoint?.amount)
                   )}
